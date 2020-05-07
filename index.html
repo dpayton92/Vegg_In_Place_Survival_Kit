@@ -11,12 +11,13 @@
 </head>
 
 <body>
+
     <!-- Navbar -->
     <nav class="navbar is-dark block" role="navigation" aria-label="main navigation">
         <div class="container">
             <!-- Logo -->
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="#">
                     <img src="./assets/img/vegg-in-place-survival-kit-logo.svg" width="260">
                 </a>
             </div>
@@ -26,7 +27,7 @@
                     <div class="navbar-item">
                         <!-- Joke Button -->
                         <div class="buttons">
-                            <a class="button is-light">
+                            <a class="button is-light" id="jokeBtn">
                                 Joke Please…
                             </a>
                         </div>
@@ -36,22 +37,33 @@
         </div>
     </nav>
 
-    <!-- Media Card Selectors -->
     <main class="container block wrapper">
-        <div class="columns">
+
+        <!-- Intro Text -->
+        <div class="hero">
+            <div class="hero-body has-text-centered">
+                <h1 class="title is-1">Don’t go bored at home!</h1>
+                <h2 class="subtitle is-2">Find the perfect entertainment while you vegg-in-place.</h2>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="columns is-variable is-0-mobile">
             <div class="column">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-256x256">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="title is-3 has-text-centered">
-                            <h3>Movies</h3>
+                <button id="movieBtn">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-256x256">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="title is-3 has-text-centered">
+                                <h3>Movies</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </button>
             </div>
 
             <div class="column">
