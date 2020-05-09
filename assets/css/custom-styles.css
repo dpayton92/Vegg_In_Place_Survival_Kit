@@ -12,7 +12,8 @@ body {
 }  
 
 button {
-  background-color: white;
+  background-color: none;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1 {
@@ -30,6 +31,20 @@ h3 {
   text-transform: uppercase;
   font-size: 24px;
 }
+
+h4 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+h5 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #F3451E;
+}
  
 p {
   font-family: 'Nunito', sans-serif;
@@ -38,6 +53,8 @@ p {
 .footer {
   margin-top: 50px;
 }
+
+
 
 /*————————————————————————————————————————————————————
 Modifiers  
@@ -55,6 +72,16 @@ Modifiers
   border: none;
   cursor: pointer;
 }
+
+
+/*————————————————————————————————————————————————————
+Modal 
+————————————————————————————————————————————————————*/
+.modal-content {
+  background-color: white;
+  padding: 50px;
+}
+
 
 
 /*————————————————————————————————————————————————————
