@@ -12,9 +12,8 @@ body {
 }  
 
 button {
-  background-color: white;
+  background: none;
   font-family: 'Nunito', sans-serif;
-  back
 }
 
 h1 {
@@ -84,7 +83,20 @@ Modal
   padding: 50px;
 }
 
+#jokeBtn {
+  border-radius: 150px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  background: none;
+  border: white solid 2px;
+  font-size: 14px;
+}
 
+#jokeBtn:hover {
+  color: black;
+  background: white;
+}
 
 /*————————————————————————————————————————————————————
 Media Choosers  
