@@ -16,8 +16,9 @@ body {
 /*————————————————————————————————————————————————————
 Modifiers  
 ————————————————————————————————————————————————————*/
-.margin-center {
+.btn-center {
   margin: 0 auto;
+  display: block;
 }
 
 .display-section {
