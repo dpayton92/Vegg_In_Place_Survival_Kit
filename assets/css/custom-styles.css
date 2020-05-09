@@ -50,6 +50,11 @@ p {
   font-family: 'Nunito', sans-serif;
 }
 
+nav {
+  padding: 5px;
+  width: 100%;
+}
+
 .footer {
   margin-top: 50px;
   padding: 2rem 1.5rem;
