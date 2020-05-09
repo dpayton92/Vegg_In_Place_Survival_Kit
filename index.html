@@ -4,63 +4,90 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vegg In Place Survival Kit</title>
+    <title>Vegg-In-Place Survival Kit</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Don't be bored at home! Generate a random movie, podcast, game or joke for hours of entertainment.">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bulma Framework -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+
+    <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- Custom CSS Styles -->
     <link rel="stylesheet" href="./assets/css/custom-styles.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar is-dark block" role="navigation" aria-label="main navigation">
-        <div class="container">
-            <!-- Logo -->
-            <div class="navbar-brand">
-                <a class="navbar-item" href="#">
-                    <img src="./assets/img/vegg-in-place-survival-kit-logo.svg" width="260">
-                </a>
-            </div>
+    <!-- Modal -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-text-centered">
+            <h5 id="jokeCategory">Programming</h5>
+            <h4 id="jokeContent">The glass is neither half-full nor half-empty, the glass is twice as big as it needs to
+                be</h4>
+        </div>
+        <button id="modalClose" class="modal-close is-large" aria-label="close"></button>
+    </div>
 
-            <div id="navbarBasicExample" class="navbar-menu is-active">
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <!-- Joke Button -->
-                        <div class="buttons">
-                            <a class="button is-light" id="jokeBtn">
-                                Joke Please…
-                            </a>
-                        </div>
+    <!-- Navbar -->
+    <nav class="navbar is-dark block" aria-label="main navigation">
+        <div class="container">
+            <nav class="level">
+                <!-- Logo Left side -->
+                <div class="level-left">
+                    <a class="level-item" href="#">
+                        <img src="./assets/img/vegg-in-place-survival-kit-logo.svg" width="260">
+                    </a>
+                </div>
+
+                <!-- Button Right side -->
+                <div class="level-right">
+                    <div class="level-item">
+                        <button id="jokeBtn" class="button">
+                            Joke Please…
+                        </button>
                     </div>
                 </div>
-            </div>
+            </nav>
         </div>
     </nav>
 
     <main class="container block wrapper">
+
         <!-- Media Chooser Section -->
-        <section class="display-section is-hidden">
+        <section class="display-section">
+
             <!-- Intro Text -->
             <div class="hero">
                 <div class="hero-body has-text-centered">
                     <h1 class="title is-1">Don’t go bored at home!</h1>
-                    <h2 class="subtitle is-2">Find the perfect entertainment while you vegg-in-place.</h2>
+                    <h2 class="subtitle is-3">Find the perfect entertainment while you vegg-in-place.</h2>
                 </div>
             </div>
 
-            <!-- Cards -->
-            <div class="columns is-variable is-0-mobile">
+            <!-- Media Chooser Cards -->
+            <div class="columns">
                 <div class="column">
-                    <button id="movieBtn" class="card">
-                        <div class="card">
+                    <button id="movieBtn" class="btn-center rm-btn-style">
+                        <div class="card movie-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/movie-img.jpg" alt="Netflix screen">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-movie-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Movies</h3>
+                                    <h3 class="has-text-white-bis">Movies</h3>
                                 </div>
                             </div>
                         </div>
@@ -68,16 +95,16 @@
                 </div>
 
                 <div class="column">
-                    <button id="podcastBtn">
-                        <div class="card">
+                    <button id="podcastBtn" class="btn-center rm-btn-style">
+                        <div class="card podcast-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/podcast-img.jpg" alt="Podcast mic">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-podcast-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Podcast</h3>
+                                    <h3 class="has-text-white-bis">Podcast</h3>
                                 </div>
                             </div>
                         </div>
@@ -85,16 +112,16 @@
                 </div>
 
                 <div class="column">
-                    <button id="gamesBtn">
-                        <div class="card">
+                    <button id="gamesBtn" class="btn-center rm-btn-style">
+                        <div class="card games-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/game-img.jpg" alt="Game controler">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-games-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Games</h3>
+                                    <h3 class="has-text-white-bis">Games</h3>
                                 </div>
                             </div>
                         </div>
@@ -102,68 +129,36 @@
                 </div>
             </div>
         </section>
+
         <!-- Movies Selector -->
-        <section class="display-section">
-            <div class="title is-1">Movies</div>
-            <!-- Tiles for movie selections -->
-            <div class="tile is-ancestor">
-                <div class="tile is-vertical is-parent">
-                    <div class="tile is-child box">
-                        <div class="tile is-child box">
-                            <h3 class="title is-3">Select a genre: </h3>
-                            <div class="level">
-                                <button id="movieComedy" class="button">Comedy</button>
-                                <button id="movieAction" class="button">Action</button>
-                            </div>
-                            <div class="level">
-                                <button id="movieDrama" class="button">Drama</button>
-                                <button id="movieHorror" class="button">Horror</button>
-                            </div>
-                        </div>
-                        <div class="tile is-vertical is-parent ">
-                            <div class="tile is-child box">
-                                <h3 class="title is-3">Select time length: </h3>
-                                <div class="level">
-                                    <button id="timeShort" class="button">Short & Sweet</button>
-                                    <button id="timeLong" class="button">Looooong</button>
-                                </div>
-
-                                <div class="level">
-                                    <button id="generateMovie" class="button is-rounded is-primary">Generate</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            </div>
-
-        </section>
+        <!-- —————————— NINA's CODE GOES HERE ——————————————— -->
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <!-- Main container -->
-            <nav class="level">
+            <div class="level">
                 <!-- Left side -->
                 <div class="level-left">
                     <div class="level-item">
-                        <p class="subtitle is-5">Built by <strong>Team Awesome</strong> with ❤️
+                        <p class="is-5">Built by <strong>Team Awesome</strong> with ❤️
                         </p>
                     </div>
                 </div>
 
                 <!-- Right side -->
                 <div class="level-right">
-                    <img class="level-item" src="./assets/img/listen-notes-logo.png" alt="">
+                    <div class="level-item">
+                        <img src="./assets/img/listen-notes-logo.png" alt="Listen Notes Logo">
+                    </div>
                 </div>
-            </nav>
+            </div>
         </div>
     </footer>
 
+    <!-- Java Script and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 
