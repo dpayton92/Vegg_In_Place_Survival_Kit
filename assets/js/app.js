@@ -16,7 +16,13 @@ function closeModal() {
 // Event Lister For Joke Button in Nav Bar
 $("#jokeBtn").on("click", function () {
 
-    // Adds a class to model to display it
+    // Clears last category text
+    $("#jokeCategory").text('');
+
+    // Clears last joke text
+    $("#jokeContent").text('');
+
+    // Adds a is-active class to model which displays it
     $(".modal").addClass("is-active");
 
     // Removes class to close Modal
@@ -25,33 +31,19 @@ $("#jokeBtn").on("click", function () {
     // Joke API Url
     var queryUrl = "https://sv443.net/jokeapi/v2/joke/Programming,Miscellaneous?type=single?blacklistFlags=nsfw+racist+sexist+religious+political"
 
+    // Joke API 
+
     // Code to work with API
     $.ajax({
         url: queryUrl,
         method: "get"
     }).then(function (response) {
 
-        console.log(response)
+        // Dynamically adds the category and joke text  
+        $("#jokeCategory").text(response.category);
+        $("#jokeContent").text(response.joke);
     });
-
-    // Code to close the modal if the the x or background is clicked
-    // if ()
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ——————————————————————————————————————————————————
 // ——————————————————————————————————————————————————
