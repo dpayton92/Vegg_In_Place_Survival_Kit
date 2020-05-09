@@ -4,49 +4,361 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Vegg In Place Survival Kit</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="./assets/css/custom-styles.css">
 </head>
 
 <body>
-    <section class="section">
+
+    <!-- Navbar -->
+    <nav class="navbar is-dark block" role="navigation" aria-label="main navigation">
         <div class="container">
-            <h1 class="title">
-                Hello World
-            </h1>
-            <p class="subtitle">
-                My first website with <strong>Bulma</strong>!
-            </p>
-            <div class="container">
-                <div class="block">
-                    <h1>Hello World</h1>
-                    <h1 class="title">Trying this title</h1>
-                    <h1 class="title is-1">Trying this title</h1>
-                    <h1 class="title is-2">Trying this title</h1>
-                    <h1 class="title is-3">Trying this title</h1>
-                    <h1 class="title is-4">Trying this title</h1>
-                    <h1 class="title is-5">Trying this title</h1>
-                    <h1 class="subtitle">this is a subtitle</h1>
-                </div>
-                <div class="block">
-                    <button class="button">Button </button>
-                    <button class="button is-white">Button </button>
-                    <button class="button is-light">Button </button>
-                    <button class="button is-dark">Button </button>
-                    <button class="button is-black">Button </button>
-                    <button class="button is-link">Button </button>
-                    <div class="button"></div>
-                </div>
-                <div class="block">
-                    <a href="" class="button is-primary">Hola</a>
+            <!-- Logo -->
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <img src="./assets/img/vegg-in-place-survival-kit-logo.svg" width="260">
+                </a>
+            </div>
 
+            <div id="navbarBasicExample" class="navbar-menu is-active">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <!-- Joke Button -->
+                        <div class="buttons">
+                            <a class="button is-light" id="jokeBtn">
+                                Joke Please…
+                            </a>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
-    </section>
-    <script src="Assets/script.js"></script>
+    </nav>
+
+    <main class="container block wrapper">
+        <!-- Media Chooser Section -->
+        <section class="display-section is-hidden">
+            <!-- Intro Text -->
+            <div class="hero">
+                <div class="hero-body has-text-centered">
+                    <h1 class="title is-1">Don’t go bored at home!</h1>
+                    <h2 class="subtitle is-2">Find the perfect entertainment while you vegg-in-place.</h2>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="columns is-variable is-0-mobile">
+                <div class="column">
+                    <button id="movieBtn" class="card">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="./assets/img/movie-img.jpg" alt="Netflix screen">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="title is-3 has-text-centered">
+                                    <h3>Movies</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="column">
+                    <button id="podcastBtn">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="./assets/img/podcast-img.jpg" alt="Podcast mic">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="title is-3 has-text-centered">
+                                    <h3>Podcast</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="column">
+                    <button id="gamesBtn">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="./assets/img/game-img.jpg" alt="Game controler">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="title is-3 has-text-centered">
+                                    <h3>Games</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Movies Selector -->
+        <section class="display-section is-hidden">
+            <div class="title is-1">Movies</div>
+            <!-- Tiles for movie selections -->
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-parent">
+                    <div class="tile is-child box">
+                        <div class="tile is-child box">
+                            <h3 class="title is-3">Select a genre: </h3>
+                            <div class="level">
+                                <button id="movieComedy" class="button">Comedy</button>
+                                <button id="movieAction" class="button">Action</button>
+                            </div>
+                            <div class="level">
+                                <button id="movieDrama" class="button">Drama</button>
+                                <button id="movieHorror" class="button">Horror</button>
+                            </div>
+                        </div>
+                        <div class="tile is-vertical is-parent ">
+                            <div class="tile is-child box">
+                                <h3 class="title is-3">Select time length: </h3>
+                                <div class="level">
+                                    <button id="timeShort" class="button">Short & Sweet</button>
+                                    <button id="timeLong" class="button">Looooong</button>
+                                </div>
+
+                                <div class="level">
+                                    <button id="generateMovie" class="button is-rounded is-primary">Generate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- podcast card -->
+        <section class="display-section">
+            <h1 class="title is-1 is-text-centered">Podcasts</h1>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Select a genre: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="newsPod" class="button is-fullwidth">News</button>
+                        </div>
+                        <div class="column">
+                            <button id="comedyPod" class="button is-fullwidth">Comedy</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="sciencePod" class="button is-fullwidth">Science</button>
+                        </div>
+                        <div class="column">
+                            <button id="techPod" class="button is-fullwidth">Technology</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="crimePod" class="button is-fullwidth">True Crime</button>
+                        </div>
+                        <div class="column">
+                            <button id="busPod" class="button is-fullwidth">Business</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Episodes in series: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="epiLess5" class="button is-fullwidth">Less than 5</button>
+                        </div>
+                        <div class="column">
+                            <button id="epiMore5" class="button is-fullwidth">More than 5</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Explicit content: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="yesExplicit" class="button is-fullwidth">Yes</button>
+                        </div>
+                        <div class="column">
+                            <button id="noExplicit" class="button is-fullwidth">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="podGenerate" class="button is-fullwidth is-rounded">Generate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- Movies  -->
+        <section class="display-section">
+            <h1 class="title is-1 is-text-centered">Movies</h1>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Select a genre: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="movieAction" class="button is-fullwidth">Action</button>
+                        </div>
+                        <div class="column">
+                            <button id="movieComedy" class="button is-fullwidth">Comedy</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="movieDrama" class="button is-fullwidth">Drama</button>
+                        </div>
+                        <div class="column">
+                            <button id="movieHorror" class="button is-fullwidth">Horror</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Select time length: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="timeShort" class="button is-fullwidth">Short & Sweet</button>
+                        </div>
+                        <div class="column">
+                            <button id="timeLong" class="button is-fullwidth">Loooooong</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="movieGenerate" class="button is-fullwidth is-rounded">Generate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- video game selector card -->
+
+        <section class="display-section">
+            <h1 class="title is-1 is-text-centered">Video Games</h1>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Choose a platform: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="xboxPlatform" class="button is-fullwidth">XBOX One</button>
+                        </div>
+                        <div class="column">
+                            <button id="pcPlatform" class="button is-fullwidth">PC</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="nintendoPlatform" class="button is-fullwidth">Nintendo Switch</button>
+                        </div>
+                        <div class="column">
+                            <button id="playstationPlatform" class="button is-fullwidth">Playstation 5</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-size-4">Select a genre: </h3>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="actionGame" class="button is-fullwidth">Action</button>
+                        </div>
+                        <div class="column">
+                            <button id="sportsGame" class="button is-fullwidth">Sports</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="rpgGame" class="button is-fullwidth">RPG</button>
+                        </div>
+                        <div class="column">
+                            <button id="puzzleGame" class="button is-fullwidth">Puzzle</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="familyGame" class="button is-fullwidth">Family</button>
+                        </div>
+                        <div class="column">
+                            <button id="strategyGame" class="button is-fullwidth">Strategy</button>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="racingGame" class="button is-fullwidth">Racing</button>
+                        </div>
+                        <div class="column">
+                            <button id="fightingGame" class="button is-fullwidth">Fighting</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <button id="gameGenerate" class="button is-fullwidth is-rounded">Generate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Main container -->
+            <nav class="level">
+                <!-- Left side -->
+                <div class="level-left">
+                    <div class="level-item">
+                        <p class="subtitle is-5">Built by <strong>Team Awesome</strong> with ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="level-right">
+                    <img class="level-item" src="./assets/img/listen-notes-logo.png" alt="">
+                </div>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
 </body>
 
 </html>
