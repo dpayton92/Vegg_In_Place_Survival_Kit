@@ -11,3 +11,11 @@ body {
   .display-section {
       display: block;
   }
+  .btn-center{
+    margin: auto 0;
+    display: block; 
+  }
+  .column{
+    box-sizing: border-box; 
+    width: 50%; 
+  }
