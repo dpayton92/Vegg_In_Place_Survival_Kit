@@ -12,8 +12,9 @@ body {
 }  
 
 button {
-  background-color: none;
+  background-color: white;
   font-family: 'Nunito', sans-serif;
+  back
 }
 
 h1 {
@@ -52,6 +53,7 @@ p {
 
 .footer {
   margin-top: 50px;
+  padding: 2rem 1.5rem;
 }
 
 
