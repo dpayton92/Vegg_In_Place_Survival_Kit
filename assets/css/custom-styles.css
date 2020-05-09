@@ -1,26 +1,87 @@
 /*————————————————————————————————————————————————————
-Modifiers  
+Base Elements  
 ————————————————————————————————————————————————————*/
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  #wrapper {
-    flex: 1;
-  }  
+#wrapper {
+  flex: 1;
+}  
+
+button {
+  background-color: white;
+}
 
  
 
 /*————————————————————————————————————————————————————
 Modifiers  
 ————————————————————————————————————————————————————*/
+.display-section {
+  display: block;
+}
+
 .btn-center {
   margin: 0 auto;
   display: block;
 }
 
-.display-section {
-  display: block;
+.rm-btn-style {
+  border: none;
+  cursor: pointer;
 }
+
+
+/*————————————————————————————————————————————————————
+Media Choosers  
+————————————————————————————————————————————————————*/
+
+.movie-card,
+.podcast-card,
+.games-card {
+  border-radius: 15px;
+  transition: .5s;
+}
+
+.cc-movie-color {
+  background-color: #F3451E;
+  border-radius: 0 0 15px 15px;
+}
+
+.cc-podcast-color {
+  background-color: #784398;
+  border-radius: 0 0 15px 15px;
+}
+
+.cc-games-color {
+  background-color: #0F6C71;
+  border-radius: 0 0 15px 15px;
+}
+
+.movie-card:hover {
+  box-shadow: -2px 17px 60px -9px rgba(243, 69, 30, 0.85);
+  -webkit-box-shadow: -2px 17px 60px -9px rgba(243, 69, 30, 0.85);
+  -moz-box-shadow: -2px 17px 60px -9px rgba(243, 69, 30, 0.85);
+  transition: .5s;
+}
+
+
+.podcast-card:hover {
+  box-shadow: -2px 17px 60px -9px rgba(119, 67, 152, 0.85);
+  -webkit-box-shadow: -2px 17px 60px -9px rgba(119, 67, 152, 0.85);
+  -moz-box-shadow: -2px 17px 60px -9px rgba(119, 67, 152, 0.85);
+  transition: .5s;
+}
+
+
+.games-card:hover {
+  box-shadow: -2px 17px 60px -9px rgba(15, 108, 113, 0.85);
+  -webkit-box-shadow: -2px 17px 60px -9px rgba(15, 108, 113, 0.85);
+  -moz-box-shadow: -2px 17px 60px -9px rgba(15, 108, 113, 0.85);
+  transition: .5s;
+}
+
+

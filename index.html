@@ -12,6 +12,16 @@
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <!-- Any other Bulma elements you want -->
+
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar is-dark block" role="navigation" aria-label="main navigation">
         <div class="container">
@@ -50,19 +60,19 @@
                 </div>
             </div>
 
-            <!-- Cards -->
-            <div class="columns is-centered">
+            <!-- Media Chooser Cards -->
+            <div class="columns">
                 <div class="column">
-                    <button id="movieBtn" class="btn-center">
-                        <div class="card">
+                    <button id="movieBtn" class="btn-center rm-btn-style">
+                        <div class="card movie-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/movie-img.jpg" alt="Netflix screen">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-movie-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Movies</h3>
+                                    <h3 class="has-text-white-bis">Movies</h3>
                                 </div>
                             </div>
                         </div>
@@ -70,16 +80,16 @@
                 </div>
 
                 <div class="column">
-                    <button id="podcastBtn" class="btn-center">
-                        <div class="card">
+                    <button id="podcastBtn" class="btn-center rm-btn-style">
+                        <div class="card podcast-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/podcast-img.jpg" alt="Podcast mic">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-podcast-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Podcast</h3>
+                                    <h3 class="has-text-white-bis">Podcast</h3>
                                 </div>
                             </div>
                         </div>
@@ -87,16 +97,16 @@
                 </div>
 
                 <div class="column">
-                    <button id="gamesBtn" class="btn-center">
-                        <div class="card">
+                    <button id="gamesBtn" class="btn-center rm-btn-style">
+                        <div class="card games-card">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="./assets/img/game-img.jpg" alt="Game controler">
                                 </figure>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content cc-games-color">
                                 <div class="title is-3 has-text-centered">
-                                    <h3>Games</h3>
+                                    <h3 class="has-text-white-bis">Games</h3>
                                 </div>
                             </div>
                         </div>
