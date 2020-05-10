@@ -199,8 +199,8 @@ Movie/Podcast/Game Selectors
 }
 
 .podcast__select-btn,
-.movie-btn,
-.games-btn {
+.movie__select-btn,
+.games__select-btn {
   padding: 30px;
   border-radius: 0;
   height: auto;
@@ -216,6 +216,10 @@ Movie/Podcast/Game Selectors
   color: #784398;
 }
 
+.podcast__select-btn:focus {
+  color: #784398;
+}
+
 .podcast__select-btn:hover {
   outline: #784398;
   background-color: #784398;
@@ -226,6 +230,11 @@ Movie/Podcast/Game Selectors
   border: solid 4px #F3451E;
   color: #F3451E;
 }
+
+.movie__select-btn:focus {
+  color: #F3451E;
+}
+
 
 .movie__select-btn:hover {
   outline: #F3451E;
@@ -238,8 +247,42 @@ Movie/Podcast/Game Selectors
   color: #0F6C71;
 }
 
+.games__select-btn:focus {
+  color: #0F6C71;
+}
+
 .games__select-btn:hover {
   outline: #0F6C71;
   background-color: #0F6C71;
   color: white;
+}
+
+.podcast__generate-btn,
+.movie__generate-btn,
+.games__generate-btn {
+  padding: 15px;
+  height: auto;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: .5s;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.20);
+  color: white;
+}
+
+.podcast__generate-btn {
+  background: #784398;
+}
+
+.podcast__generate-btn:focus {
+  color: white;
+}
+
+.podcast__generate-btn:hover {
+  background: none;
+  color: #784398;
+  border: solid 4px #784398;
+  padding: 12px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
 }
