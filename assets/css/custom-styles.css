@@ -60,6 +60,9 @@ nav {
   padding: 2rem 1.5rem;
 }
 
+.button {
+  white-space: normal;
+}
 
 
 /*————————————————————————————————————————————————————
@@ -79,8 +82,8 @@ Modifiers
   cursor: pointer;
 }
 
-.column {
-  box-sizing: border-box;  
+.half-width {
+  width: 50%;
 }
 
 .bold-font {
@@ -210,7 +213,7 @@ Movie/Podcast/Game Selectors
   text-transform: uppercase;
   background: none;
   transition: .5s;
-  word-wrap: break-word;
+  height: 100%;
 }
 
 /* Podcast select button */
@@ -325,4 +328,40 @@ Movie/Podcast/Game Selectors
   border: solid 4px #0F6C71;
   padding: 12px;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*————————————————————————————————————————————————————
+————————————————————————————————————————————————————
+————————————————————————————————————————————————————
+
+Media Selectors 
+
+————————————————————————————————————————————————————
+————————————————————————————————————————————————————
+————————————————————————————————————————————————————*/
+@media only screen and (max-width: 574px) {
+  .podcast__select-btn,
+  .movie__select-btn,
+  .games__select-btn {
+    padding: 40px 10px;
+    font-size: 18px;
+  }
+
+  .selector-container {
+    background: #F8F8F8;
+    border: 1px solid #E0DADA;
+    max-width: 700px;
+    padding: 50px 20px;
+  }
 }
