@@ -185,7 +185,7 @@ Movie/Podcast/Game Selectors
 .selector-container {
   background: #F8F8F8;
   border: 1px solid #E0DADA;
-  max-width: 600px;
+  max-width: 700px;
   padding: 50px;
 }
 
@@ -202,7 +202,7 @@ Movie/Podcast/Game Selectors
 .podcast__select-btn,
 .movie__select-btn,
 .games__select-btn {
-  padding: 30px;
+  padding: 40px 10px;
   border-radius: 0;
   height: auto;
   font-size: 20px;
@@ -210,6 +210,7 @@ Movie/Podcast/Game Selectors
   text-transform: uppercase;
   background: none;
   transition: .5s;
+  word-wrap: break-word;
 }
 
 /* Podcast select button */
@@ -312,7 +313,7 @@ Movie/Podcast/Game Selectors
 }
 
 /* Game generate button */
-.game__generate-btn {
+.games__generate-btn {
   background: #0F6C71;
   box-shadow: 0px 5px 14px rgba(15, 108, 113, 0.50);
   border-color: #0F6C71;

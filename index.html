@@ -66,7 +66,7 @@
     <main class="block">
 
         <!-- Media Chooser Section -->
-        <section class="display-section is-hidden" id="mediaSelectorCard">
+        <section class="display-section" id="mediaSelectorCard">
 
             <!-- Intro Text -->
             <div class="hero">
@@ -218,6 +218,7 @@
             <h1 class="title is-1 movie-color has-text-centered">Movies</h1>
 
             <div class="selector-container container">
+
                 <!-- Genre -->
                 <div class="columns question-divider">
                     <div class="column">
@@ -268,73 +269,75 @@
         </section>
 
         <!-- Games  Selector -->
-        <section class="display-section" id="gameCard">
-            <h1 class="title is-1 is-text-centered">Video Games</h1>
+        <section class="display-section container" id="gameCard">
+            <h1 class="title is-1 has-text-centered">Video Games</h1>
 
-            <!-- Platform -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-4">Choose a platform: </h3>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="xboxPlatform" class="button is-fullwidth">XBOX One</button>
+            <div class="selector-container container">
+                <!-- Platform -->
+                <div class="columns">
+                    <div class="column">
+                        <h4 class="title is-size-4">Choose a platform:</h4>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="xboxPlatform" class="button is-fullwidth games__select-btn">XBOX One</button>
+                            </div>
+                            <div class="column">
+                                <button id="pcPlatform" class="button is-fullwidth games__select-btn">PC</button>
+                            </div>
                         </div>
-                        <div class="column">
-                            <button id="pcPlatform" class="button is-fullwidth">PC</button>
-                        </div>
-                    </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="nintendoPlatform" class="button is-fullwidth">Nintendo Switch</button>
-                        </div>
-                        <div class="column">
-                            <button id="playstationPlatform" class="button is-fullwidth">Playstation 5</button>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="nintendoPlatform" class="button is-fullwidth games__select-btn">Nintendo Switch</button>
+                            </div>
+                            <div class="column">
+                                <button id="playstationPlatform" class="button is-fullwidth games__select-btn">Playstation 5</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- or -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-1 or-separator">Or</h3>
+                <!-- or -->
+                <div class="columns margin-top-2">
+                    <div class="column">
+                        <h3 class="title is-size-2 or-separator has-text-centered">— Or —</h3>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Genre -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-4">Select a genre: </h3>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="actionGame" class="button is-fullwidth">Action</button>
+                <!-- Genre -->
+                <div class="columns margin-top-2">
+                    <div class="column">
+                        <h4 class="title is-size-4">Select a genre:</h4>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="actionGame" class="button is-fullwidth games__select-btn">Action</button>
+                            </div>
+                            <div class="column">
+                                <button id="sportsGame" class="button is-fullwidth games__select-btn">Sports</button>
+                            </div>
                         </div>
-                        <div class="column">
-                            <button id="sportsGame" class="button is-fullwidth">Sports</button>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="rpgGame" class="button is-fullwidth games__select-btn">RPG</button>
+                            </div>
+                            <div class="column">
+                                <button id="puzzleGame" class="button is-fullwidth games__select-btn">Puzzle</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="rpgGame" class="button is-fullwidth">RPG</button>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="familyGame" class="button is-fullwidth games__select-btn">Family</button>
+                            </div>
+                            <div class="column">
+                                <button id="strategyGame" class="button is-fullwidth games__select-btn">Strategy</button>
+                            </div>
                         </div>
-                        <div class="column">
-                            <button id="puzzleGame" class="button is-fullwidth">Puzzle</button>
-                        </div>
-                    </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="familyGame" class="button is-fullwidth">Family</button>
-                        </div>
-                        <div class="column">
-                            <button id="strategyGame" class="button is-fullwidth">Strategy</button>
-                        </div>
-                    </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="racingGame" class="button is-fullwidth">Racing</button>
-                        </div>
-                        <div class="column">
-                            <button id="fightingGame" class="button is-fullwidth">Fighting</button>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="racingGame" class="button is-fullwidth games__select-btn">Racing</button>
+                            </div>
+                            <div class="column">
+                                <button id="fightingGame" class="button is-fullwidth games__select-btn">Fighting</button>
+                            </div>
                         </div>
                     </div>
                 </div>
