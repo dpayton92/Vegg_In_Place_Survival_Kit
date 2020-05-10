@@ -198,6 +198,7 @@ Movie/Podcast/Game Selectors
   border-bottom: #C8C8C8 1px solid;
 }
 
+/* Base styles for select buttons */
 .podcast__select-btn,
 .movie__select-btn,
 .games__select-btn {
@@ -211,6 +212,7 @@ Movie/Podcast/Game Selectors
   transition: .5s;
 }
 
+/* Podcast select button */
 .podcast__select-btn {
   border: solid 4px #784398;
   color: #784398;
@@ -221,11 +223,12 @@ Movie/Podcast/Game Selectors
 }
 
 .podcast__select-btn:hover {
-  outline: #784398;
+  border-color: #784398;
   background-color: #784398;
   color: white;
 }
 
+/* Movie select button */
 .movie__select-btn {
   border: solid 4px #F3451E;
   color: #F3451E;
@@ -235,13 +238,13 @@ Movie/Podcast/Game Selectors
   color: #F3451E;
 }
 
-
 .movie__select-btn:hover {
-  outline: #F3451E;
+  border-color: #F3451E;
   background-color: #F3451E;
   color: white;
 }
 
+/* Games select button */
 .games__select-btn {
   border: solid 4px #0F6C71;
   color: #0F6C71;
@@ -252,11 +255,12 @@ Movie/Podcast/Game Selectors
 }
 
 .games__select-btn:hover {
-  outline: #0F6C71;
+  border-color: #0F6C71;
   background-color: #0F6C71;
   color: white;
 }
 
+/* Base styles for generate buttons */
 .podcast__generate-btn,
 .movie__generate-btn,
 .games__generate-btn {
@@ -267,22 +271,57 @@ Movie/Podcast/Game Selectors
   text-transform: uppercase;
   margin-top: 20px;
   transition: .5s;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.20);
+  /* box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.20); */
   color: white;
 }
 
+.podcast__generate-btn:focus,
+.movie__generate-btn:focus,
+.games__generate-btn:focus {
+  color: white;
+}
+
+/* Podcast generate button */
 .podcast__generate-btn {
   background: #784398;
-}
-
-.podcast__generate-btn:focus {
-  color: white;
+  box-shadow: 0px 5px 14px rgba(119, 67, 152, 0.50);
+  border-color: #784398;
 }
 
 .podcast__generate-btn:hover {
   background: none;
   color: #784398;
   border: solid 4px #784398;
+  padding: 12px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
+}
+
+/* Movie generate button */
+.movie__generate-btn {
+  background: #F3451E;
+  box-shadow: 0px 5px 14px rgba(243, 69, 30, 0.50);
+  border-color: #F3451E;
+}
+
+.movie__generate-btn:hover {
+  background: none;
+  color: #F3451E;
+  border: solid 4px #F3451E;
+  padding: 12px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
+}
+
+/* Game generate button */
+.game__generate-btn {
+  background: #0F6C71;
+  box-shadow: 0px 5px 14px rgba(15, 108, 113, 0.50);
+  border-color: #0F6C71;
+}
+
+.game__generate-btn:hover {
+  background: none;
+  color: #0F6C71;
+  border: solid 4px #0F6C71;
   padding: 12px;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
 }
