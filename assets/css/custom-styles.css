@@ -193,6 +193,11 @@ Movie/Podcast/Game Selectors
   color: #D6D5D5;
 }
 
+.question-divider {
+  padding-bottom: 2rem;
+  border-bottom: #C8C8C8 1px solid;
+}
+
 .podcast__select-btn,
 .movie-btn,
 .games-btn {
@@ -217,7 +222,24 @@ Movie/Podcast/Game Selectors
   color: white;
 }
 
-.question-divider {
-  padding-bottom: 2rem;
-  border-bottom: #C8C8C8 1px solid;
+.movie__select-btn {
+  border: solid 4px #F3451E;
+  color: #F3451E;
+}
+
+.movie__select-btn:hover {
+  outline: #F3451E;
+  background-color: #F3451E;
+  color: white;
+}
+
+.games__select-btn {
+  border: solid 4px #0F6C71;
+  color: #0F6C71;
+}
+
+.games__select-btn:hover {
+  outline: #0F6C71;
+  background-color: #0F6C71;
+  color: white;
 }
