@@ -34,7 +34,6 @@ h3 {
 
 h4 {
   font-family: 'Nunito', sans-serif;
-  font-weight: 800;
   font-size: 24px;
 }
 
@@ -45,7 +44,7 @@ h5 {
   font-size: 18px;
   color: #F3451E;
 }
- 
+
 p {
   font-family: 'Nunito', sans-serif;
 }
@@ -83,6 +82,10 @@ Modifiers
   box-sizing: border-box;  
 }
 
+.bold-font {
+  font-weight: 800;
+}
+
 
 /*————————————————————————————————————————————————————
 Modal 
@@ -90,6 +93,7 @@ Modal
 .modal-content {
   background-color: white;
   padding: 50px;
+  word-wrap: break-word;
 }
 
 #jokeBtn {
