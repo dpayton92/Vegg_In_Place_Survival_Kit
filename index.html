@@ -63,10 +63,10 @@
         </div>
     </nav>
 
-    <main class="container block wrapper">
+    <main class="block">
 
         <!-- Media Chooser Section -->
-        <section class="display-section" id="mediaSelectorCard">
+        <section class="display-section is-hidden" id="mediaSelectorCard">
 
             <!-- Intro Text -->
             <div class="hero">
@@ -132,83 +132,87 @@
         </section>
 
         <!-- Podcast Selector -->
-        <section class="display-section is-hidden" id="podCard">
-            <h1 class="title is-1 is-text-centered">Podcasts</h1>
-            
-            <!-- Genre -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-4">Select a genre:</h3>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="newsPod" class="button is-fullwidth">News</button>
+        <section class="display-section container" id="podCard">
+
+            <h1 class="title has-text-centered podcast-color is-1">Podcasts</h1>
+
+            <div class="selector-container container">
+                <!-- Genre -->
+                <div class="columns question-divider">
+                    <div class="column">
+                        <h4 class="title is-size-4">Select a genre:</h4>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="newsPod" class="button is-fullwidth podcast__select-btn">News</button>
+                            </div>
+                            <div class="column">
+                                <button id="comedyPod" class="button is-fullwidth podcast__select-btn">Comedy</button>
+                            </div>
                         </div>
-                        <div class="column">
-                            <button id="comedyPod" class="button is-fullwidth">Comedy</button>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="sciencePod" class="button is-fullwidth podcast__select-btn">Science</button>
+                            </div>
+                            <div class="column">
+                                <button id="techPod" class="button is-fullwidth podcast__select-btn">Technology</button>
+                            </div>
+                        </div>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="crimePod" class="button is-fullwidth podcast__select-btn">True Crime</button>
+                            </div>
+                            <div class="column">
+                                <button id="busPod" class="button is-fullwidth podcast__select-btn">Business</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="sciencePod" class="button is-fullwidth">Science</button>
-                        </div>
-                        <div class="column">
-                            <button id="techPod" class="button is-fullwidth">Technology</button>
+                </div>
+
+                <!-- Episodes Amount -->
+                <div class="columns question-divider margin-top-2">
+                    <div class="column">
+                        <h4 class="title is-size-4">Episodes in series:</h4>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="epiLess5" class="button is-fullwidth">Less than 5</button>
+                            </div>
+                            <div class="column">
+                                <button id="epiMore5" class="button is-fullwidth">More than 5</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="crimePod" class="button is-fullwidth">True Crime</button>
+                </div>
+
+                <!-- Explicit Content -->
+                <div class="columns margin-top-2">
+                    <div class="column">
+                        <h4 class="title is-size-4">Explicit content:</h4>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <button id="yesExplicit" class="button is-fullwidth">Yes</button>
+                            </div>
+                            <div class="column">
+                                <button id="noExplicit" class="button is-fullwidth">No</button>
+                            </div>
                         </div>
-                        <div class="column">
-                            <button id="busPod" class="button is-fullwidth">Business</button>
-                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Podcast -->
+                <div class="columns">
+                    <div class="column">
+                        <button id="podGenerate" class="button is-fullwidth is-rounded">Generate</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Episodes Amount -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-4">Episodes in series:</h3>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="epiLess5" class="button is-fullwidth">Less than 5</button>
-                        </div>
-                        <div class="column">
-                            <button id="epiMore5" class="button is-fullwidth">More than 5</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Explicit Content -->
-            <div class="columns">
-                <div class="column">
-                    <h3 class="title is-size-4">Explicit content:</h3>
-                    <div class="columns is-mobile">
-                        <div class="column">
-                            <button id="yesExplicit" class="button is-fullwidth">Yes</button>
-                        </div>
-                        <div class="column">
-                            <button id="noExplicit" class="button is-fullwidth">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Submit Podcast -->
-            <div class="columns">
-                <div class="column">
-                    <button id="podGenerate" class="button is-fullwidth is-rounded">Generate</button>
-                </div>
-            </div>
 
         </section>
 
         <!-- Movies Selector -->
-        <section class="display-section is-hidden" id="movieCard">
+        <section class="display-section" id="movieCard">
             <h1 class="title is-1 is-text-centered">Movies</h1>
-            
+
             <!-- Genre -->
             <div class="columns">
                 <div class="column">
@@ -256,7 +260,7 @@
         </section>
 
         <!-- Games  Selector -->
-        <section class="display-section is-hidden" id="gameCard">
+        <section class="display-section" id="gameCard">
             <h1 class="title is-1 is-text-centered">Video Games</h1>
 
             <!-- Platform -->

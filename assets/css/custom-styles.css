@@ -19,6 +19,7 @@ button {
 h1 {
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
+  margin-top: 1rem;
 }
 
 h2 {
@@ -86,6 +87,23 @@ Modifiers
   font-weight: 800;
 }
 
+.movie-color {
+  color: #F3451E;
+}
+
+.podcast-color {
+  color: #784398;
+}
+
+.games-color {
+  color: #0F6C71;
+}
+
+.margin-top-2{
+  margin-top: 2rem;
+}
+
+
 
 /*————————————————————————————————————————————————————
 Modal 
@@ -110,7 +128,6 @@ Modal
   color: black;
   background: white;
 }
-
 
 
 /*————————————————————————————————————————————————————
@@ -165,6 +182,42 @@ Media Choosers
 /*————————————————————————————————————————————————————
 Movie/Podcast/Game Selectors  
 ————————————————————————————————————————————————————*/
+.selector-container {
+  background: #F8F8F8;
+  border: 1px solid #E0DADA;
+  max-width: 600px;
+  padding: 50px;
+}
+
 .or-separator {
   color: #D6D5D5;
+}
+
+.podcast__select-btn,
+.movie-btn,
+.games-btn {
+  padding: 30px;
+  border-radius: 0;
+  height: auto;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: none;
+  transition: .5s;
+}
+
+.podcast__select-btn {
+  border: solid 4px #784398;
+  color: #784398;
+}
+
+.podcast__select-btn:hover {
+  outline: #784398;
+  background-color: #784398;
+  color: white;
+}
+
+.question-divider {
+  padding-bottom: 2rem;
+  border-bottom: #C8C8C8 1px solid;
 }
