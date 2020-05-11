@@ -6,7 +6,7 @@
 var queryParams = {
     "X-ListenAPI-key": "5c02a61e371a4e1fbb549aab65c3f07b",
 };
-var queryUrl = "https://listen-api.listennotes.com/api/v2";
+var queryUrl = "https://cors-anywhere.herokuapp.com/https://listen-api.listennotes.com/api/v2";
 
 var parameters = {
     id: 0,
@@ -29,15 +29,27 @@ var parameters = {
 // response.toJSON();
 //var queryUrl = "https://www.numbeo.com/api/city_prices?api_key=4n7468zewaj81z&query=Belgrade";
 
-var encodedUrl = encodeURIComponent(queryUrl);
-$.ajax({
-    type: 'GET',
-    contentType: 'application/json',
-    url: 'https://corsbridge.herokuapp.com/' + encodedUrl,
-    success: function (data) {
-        console.log(data);
-    }
-});
+// var encodedUrl = encodeURIComponent(queryUrl);
+// $.ajax({
+//     type: 'GET',
+//     contentType: 'application/json',
+//     url: 'https://corsbridge.herokuapp.com/' + encodedUrl,
+//     success: function (data) {
+//         console.log(data);
+//     }
+// });
+
+// var settings = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "https://listennotes.p.rapidapi.com/api/v1/search?sort_by_date=0&type=episode&offset=0&len_min=2&len_max=10&genre_ids=68%252C82&published_before=1490190241000&published_after=1390190241000&only_in=title&language=English&safe_mode=1&q=star%20wars",
+//     "method": "GET",
+//     "headers": {
+//         "x-rapidapi-host": "https://listen-api.listennotes.com/api/v2",
+//         "x-rapidapi-key": "5c02a61e371a4e1fbb549aab65c3f07b"
+//     }
+// }
+
 
 
 // function buildQueryURL() {
@@ -52,35 +64,56 @@ $.ajax({
 // };
 function displayPodcastInfo() {
 
-    //var queryURL = 
-    //var queryResult = queryURL + queryParams["api-key"];
-
     // Creates AJAX call for the specific button being clicked
     $.ajax({
         url: queryUrl,
         method: "GET",
-        headers: { 'X-ListenAPI-Key': '5c02a61e371a4e1fbb549aab65c3f07b' }
+        headers: {
+            'X-ListenAPI-Key': '5c02a61e371a4e1fbb549aab65c3f07b',
+        }
     }).then(function (response) {
 
+        console.log("amazing things will happen");
         //create a function that takes the response and sets display parameters
-        console.log(response);
+
         // Creates a div to display the podcast info
-        // Retrieves the description Data
-        // Creates an element to have the description displayed
-        // Displays the description
-        // Retrieves the episode number in series
-        // Creates an element to hold the episode number in series
-        // Displays the episode number in series
+        var podcastResultsDiv = $("<div class = 'podcastResults'>");
         // Retrieves the title
-        // Creates an element to hold the title
-        // Appends the title
+        var podTitle = response.title;
+        // Creates an element to have the description displayed
+        var titleDisplay = $("<p>").text("Title: " + podTitle);
+        // Displays the description
+        podcastResultsDiv.append(titleDisplay);
+
+
+        // Retrieves the description Data
+        var podDescript = response.description;
+        // Creates an element to have the description displayed
+        var descrDisplay = $("<p>").text("Description: " + podDescript);
+        // Displays the description
+        podcastResultsDiv.append(descrDisplay);
+
+        // Retrieves the total number of episodes in series
+        var numbOfEpis = response.total_episodes;
+        // Creates an element to hold the episode number in series
+        var epiDisplay = $("<p>").text("Number of episodes in series: " + numbOfEpis);
+        //displays the episode numbers
+        podcastResultsDiv.append(epiDisplay);
+        //console.log(response.total_episodes);
+
+        //url for the image
+        var podimgURL = response.thumbnail;
         // Creates an element to hold the podcast thumbnail image
+        var podThumbnail = $("<img>").attr("src", podimgURL);
         // Appends the podcast thumbnail image
+        podcastResultsDiv.append(podThumbnail);
         // Displays podcast info for 3 podcasts 
+        //create for loop? 
     });
 
+
 }
-displayPodcastInfo();
+
 
 //event listener for podcast button from main page
 
@@ -98,37 +131,42 @@ $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
     parameters.id = 99;
-    buildQueryURL();
+    //buildQueryURL();
 
 });
 //comedy selector button
 $("#comedyPod").on("click", function (event) {
     event.preventDefault();
     console.log("comedy pod");
+    parameters.id = 133;
 
 });
 //science selector button
 $("#sciencePod").on("click", function (event) {
     event.preventDefault();
     console.log("science pod");
+    parameters.id = 107;
 
 });
 //technology selector button
 $("#techPod").on("click", function (event) {
     event.preventDefault();
     console.log("tech pod");
+    parameters.id = 127;
 
 });
 //True Crime selector button
 $("#crimePod").on("click", function (event) {
     event.preventDefault();
     console.log("crime pod");
+    parameters.id = 135;
 
 });
 //business selector button
 $("#busPod").on("click", function (event) {
     event.preventDefault();
     console.log("bizness pod");
+    parameters.id = 93;
 
 });
 
@@ -165,7 +203,8 @@ $("#podGenerate").on("click", function (event) {
 });
 
 
-
+// Adding a click event listener to all elements with a class of "movie-btn"
+$(document).on("click", "#podGenerate", displayPodcastInfo);
 
 
 
