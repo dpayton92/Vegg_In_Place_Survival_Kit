@@ -29,7 +29,7 @@ $("#jokeBtn").on("click", function () {
     closeModal();
 
     // Joke API Url
-    var queryUrl = "https://sv443.net/jokeapi/v2/joke/Programming,Miscellaneous?type=single?blacklistFlags=nsfw+racist+sexist+religious+political"
+    var queryUrl = "https://official-joke-api.appspot.com/random_joke"
 
     // Joke API 
 
@@ -40,8 +40,9 @@ $("#jokeBtn").on("click", function () {
     }).then(function (response) {
 
         // Dynamically adds the category and joke text  
-        $("#jokeCategory").text(response.category);
-        $("#jokeContent").text(response.joke);
+        $("#jokeCategory").text(response.type);
+        $("#jokeSetup").text(response.setup);
+        $("#jokePunchline").text(response.punchline);
     });
 });
 

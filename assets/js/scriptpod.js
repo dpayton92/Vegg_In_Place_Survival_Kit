@@ -1,26 +1,19 @@
 
-//queryURL used to query the API
-//https://cors-anywhere.herokuapp.com/
-
-
-//var queryURL = "https://listen-api.listennotes.com/api/v2/search?q=Hidden%20Brain&sort_by_date=0&type=episode&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=0";
 //object to contain API call's query parameters and set API key
 var headers = {
     "X-ListenAPI-key": "5c02a61e371a4e1fbb549aab65c3f07b",
 };
 
-// var parameters = {
-//     id: 0,
-//     explicit: 0,
-//     epiLength: "",
-// }
-var id = "";
+var parameters = {
+    id: "",
+
+};
+
+
 var explicit = "";
 var epiLength = "";
-var userInput = "";
-console.log(id);
+var userInput;
 
-// var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=sort_by_date=0&type=episode&offset=0&" + epiLength + "&genre_ids=" + id + "&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=" + explicit;
 
 
 
@@ -41,20 +34,16 @@ function generateResults() {
 
 
 
-function buildQueryURL(id, explicit, epiLength, userInput) {
-
-    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=0&type=episode&offset=0&len_max=30&genre_ids=" + id + "&language=Spanish&safe_mode=0";
+function buildQueryURL(podData) {
+    console.log(podData);
+    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=0&type=episode&offset=0&len_max=30&genre_ids=" + podData.id + "&language=English&safe_mode=0";
 
     //console.log(queryUrl);
     displayPodcastInfo(queryUrl);
 };
 function displayPodcastInfo(queryUrl) {
 
-    //console.log("amazing things will happen");
-    // var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=sort_by_date=0&type=episode&offset=0&" + epiLength + "&genre_ids=" + id + "&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=" + explicit;
-
-
-    console.log(queryUrl);
+    //console.log(queryUrl);
     // Creates AJAX call for the specific button being clicked
     $.ajax({
         url: queryUrl,
@@ -65,42 +54,49 @@ function displayPodcastInfo(queryUrl) {
     }).then(function (response) {
 
         console.log(response);
-
+        var podDis = $("#displayPodResults");
         //create a function that takes the response and sets display parameters
-
-        // Creates a div to display the podcast info
-        var podcastResultsDiv = $("<div class = 'podcastResults'>");
-        // Retrieves the title
-        var podTitle = response.title;
-        // Creates an element to have the description displayed
-        var titleDisplay = $("<p>").text("Title: " + podTitle);
-        // Displays the description
-        podcastResultsDiv.append(titleDisplay);
+        //var podArray = 0;
+        for (var podArray = 0; podArray < 3; podArray++) {
 
 
-        // Retrieves the description Data
-        var podDescript = response.description;
-        // Creates an element to have the description displayed
-        var descrDisplay = $("<p>").text("Description: " + podDescript);
-        // Displays the description
-        podcastResultsDiv.append(descrDisplay);
+            // Creates a div to display the podcast info
+            var podcastResultsDiv = $("<div class = 'podcastResults'>");
+            // Retrieves the title
+            var podTitle = response.results[podArray].title_original;
+            // Creates an element to have the description displayed
+            var titleDisplay = $("<p>").text("Title: " + podTitle);
+            // Displays the description
+            podcastResultsDiv.append(titleDisplay);
+            podDis.append(podcastResultsDiv);
 
-        // Retrieves the total number of episodes in series
-        var numbOfEpis = response.total_episodes;
-        // Creates an element to hold the episode number in series
-        var epiDisplay = $("<p>").text("Number of episodes in series: " + numbOfEpis);
-        //displays the episode numbers
-        podcastResultsDiv.append(epiDisplay);
-        //console.log(response.total_episodes);
 
-        //url for the image
-        var podimgURL = response.thumbnail;
-        // Creates an element to hold the podcast thumbnail image
-        var podThumbnail = $("<img>").attr("src", podimgURL);
-        // Appends the podcast thumbnail image
-        podcastResultsDiv.append(podThumbnail);
-        // Displays podcast info for 3 podcasts 
-        //create for loop? 
+
+            // Retrieves the description Data
+            var podDescript = response.results[podArray].description_original;
+            // Creates an element to have the description displayed
+            var descrDisplay = $("<p>").text("Description: " + podDescript);
+            // Displays the description
+            podcastResultsDiv.append(descrDisplay);
+            podDis.append(descrDisplay);
+            var audioMinutes = (((response.results[0].audio_length_sec) / 60).toFixed(2));
+            // Retrieves the total number of episodes in series
+            var audioLength = audioMinutes;
+            // Creates an element to hold the episode number in series
+            var epiDisplay = $("<p>").text("Audio Length: " + audioLength + " minutes");
+            //displays the episode numbers
+            podcastResultsDiv.append(epiDisplay);
+            //console.log(response.total_episodes);
+
+            //url for the image
+            var podimgURL = response.results[podArray].thumbnail;
+            // Creates an element to hold the podcast thumbnail image
+            var podThumbnail = $("<img>").attr("src", podimgURL);
+            // Appends the podcast thumbnail image
+            podcastResultsDiv.append(podThumbnail);
+            // Displays podcast info for 3 podcasts 
+            //create for loop? 
+        }
     });
 
 
@@ -123,9 +119,11 @@ $("#podcastBtn").on("click", function (event) {
 $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
-    id = "99";
-    buildQueryURL(id);
+    parameters.id = "99";
+
+    //buildQueryURL(id);
     //displayPodcastInfo(id);
+
 
 });
 //comedy selector button
@@ -133,14 +131,14 @@ $("#comedyPod").on("click", function (event) {
     event.preventDefault();
     console.log("comedy pod");
     id = "133";
-    displayPodcastInfo(id);
+    //buildQueryURL(id);
 
 });
 //science selector button
 $("#sciencePod").on("click", function (event) {
     event.preventDefault();
     console.log("science pod");
-    parameters.id = 107;
+    id = "107";
 
 });
 //technology selector button
@@ -196,13 +194,13 @@ $("#noExplicit").on("click", function (event) {
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     console.log("your results");
-    generateResults();
-
+    //generateResults();
+    buildQueryURL(parameters);
 });
 
 //displayPodcastInfo();
-// Adding a click event listener to all elements with a class of "movie-btn"
-$(document).on("click", "#podGenerate", displayPodcastInfo(queryUrl));
+// Adding a click event listener to generate call display function
+$(document).on("click", "#podGenerate", displayPodcastInfo);
 
 
 
