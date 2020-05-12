@@ -4,41 +4,34 @@ var headers = {
     "X-ListenAPI-key": "5c02a61e371a4e1fbb549aab65c3f07b",
 };
 
+//object of parameters to be passed into buildQueryUrl function
 var parameters = {
     id: "",
+    userInput: "",
+    epiLength: "",
+    explicit: "",
 
 };
 
-
-var explicit = "";
-var epiLength = "";
-var userInput;
-
-
-
-
-function generateResults() {
-    console.log(queryUrl);
-    // var encodedUrl = encodeURIComponent(queryUrl);
-    // $.ajax({
-    //     type: 'GET',
-    //     contentType: 'application/json',
-    //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
-    //     headers: headers,
-    //     success: function (data) {
-    //         console.log(data);
-    //     }
-    // })
-};
-
-
-
+// function generateResults() {
+//     console.log(queryUrl);
+//     // var encodedUrl = encodeURIComponent(queryUrl);
+//     // $.ajax({
+//     //     type: 'GET',
+//     //     contentType: 'application/json',
+//     //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
+//     //     headers: headers,
+//     //     success: function (data) {
+//     //         console.log(data);
+//     //     }
+//     // })
+// };
 
 function buildQueryURL(podData) {
     console.log(podData);
-    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=0&type=episode&offset=0&len_max=30&genre_ids=" + podData.id + "&language=English&safe_mode=0";
+    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=" + podData.userInput + "&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
 
-    //console.log(queryUrl);
+    console.log(queryUrl);
     displayPodcastInfo(queryUrl);
 };
 function displayPodcastInfo(queryUrl) {
@@ -70,8 +63,6 @@ function displayPodcastInfo(queryUrl) {
             podcastResultsDiv.append(titleDisplay);
             podDis.append(podcastResultsDiv);
 
-
-
             // Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
             // Creates an element to have the description displayed
@@ -101,9 +92,13 @@ function displayPodcastInfo(queryUrl) {
 
 
 }
-//displayPodcastInfo();
 
-
+//user input textbox 
+function myFunction() {
+    //grabs text to put into parameters object
+    parameters.userInput = document.getElementById("myInput").value;
+    //console.log(parameters.userInput);
+}
 //event listener for podcast button from main page
 
 $("#podcastBtn").on("click", function (event) {
@@ -121,123 +116,79 @@ $("#newsPod").on("click", function (event) {
     //set value of news id (99) to object id key
     parameters.id = "99";
 
-    //buildQueryURL(id);
-    //displayPodcastInfo(id);
-
-
 });
+
 //comedy selector button
 $("#comedyPod").on("click", function (event) {
     event.preventDefault();
-    console.log("comedy pod");
-    id = "133";
-    //buildQueryURL(id);
+    parameters.id = "133";
 
 });
+
 //science selector button
 $("#sciencePod").on("click", function (event) {
     event.preventDefault();
-    console.log("science pod");
-    id = "107";
+    parameters.id = "107";
 
 });
+
 //technology selector button
 $("#techPod").on("click", function (event) {
     event.preventDefault();
-    console.log("tech pod");
     parameters.id = 127;
 
 });
+
 //True Crime selector button
 $("#crimePod").on("click", function (event) {
     event.preventDefault();
-    console.log("crime pod");
     parameters.id = 135;
 
 });
+
 //business selector button
 $("#busPod").on("click", function (event) {
     event.preventDefault();
-    console.log("bizness pod");
-    id = "93";
-    displayPodcastInfo(id);
+    parameters.id = "93";
+
 
 });
 
-//less than 5 episodes in a series
+//episode is less than 30 minutes
 $("#epiUnder30").on("click", function (event) {
     event.preventDefault();
-    epiLength = "len_max=30";
+    parameters.epiLength = "len_min=10&len_max=30";
 
 });
-//more than 5 episodes in a series
+
+//episode is longer than 30 minutes
 $("#epiOver30").on("click", function (event) {
     event.preventDefault();
-    console.log("more than 5");
+    parameters.epiLength = "len_min=30";
 
 });
 
 //explicit content YES
 $("#yesExplicit").on("click", function (event) {
     event.preventDefault();
-    explicit = "0";
-    console.log("YES dirty");
+    parameters.explicit = "0";
+
 
 });
+
 //explicit content please NO
 $("#noExplicit").on("click", function (event) {
     event.preventDefault();
-    console.log("no thank you, dirty");
+    parameters.explicit = "1";
 
 });
+
 //generate results
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
-    console.log("your results");
-    //generateResults();
     buildQueryURL(parameters);
 });
 
-//displayPodcastInfo();
 // Adding a click event listener to generate call display function
 $(document).on("click", "#podGenerate", displayPodcastInfo);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Base URL: https://listen-api.listennotes.com/api/v2
-
-
-
-
-
-
-
-
-// Listen Notes API
-
-// Must display logo on at least one page. 
-
-// Applications using the Listen API must not pre-fetch, cache, index, or store any content on the server side.
-// Note that the id and the pub_date (e.g., latest_pub_date_ms, pub_date_ms...) of a podcast or an episode are exempt from the caching restriction.
-
-// GET/podcasts/search?q=bitcoin&only_in=title%2Cdescription&language=French
-
-// podcasts/4d3fe717742d4963a85562e9f84d8c79?q=bitcoin&only_in=title&language=French
-
-// genres?top_level_only=0
-// genres?top_level_only=0
-
-// search/?q=bitcoin&type=podcast&only_in=title&language=French
 

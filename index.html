@@ -132,15 +132,22 @@
         </section>
 
         <!-- Podcast Selector -->
-        <section class="display-section container" id="podCard">
+        <section class="display-section container is-hidden" id="podCard">
 
             <h1 class="title has-text-centered podcast-color is-1">Podcasts</h1>
+
+            <div class="selector-container container" id="podSearch">
+                <h4 class="title is-size-4">What topic are you in the mood to hear about?</h4>
+                <input class="input is-rounded" id="myInput" type="text" oninput="myFunction()"
+                    placeholder="type your search here">
+
+            </div>
 
             <div class="selector-container container">
                 <!-- Genre -->
                 <div class="columns question-divider">
                     <div class="column">
-                        <h4 class="title is-size-4">Select a genre:</h4>
+                        <h4 class="title is-size-4">Now let's choose a genre for your topic:</h4>
                         <div class="columns is-mobile">
                             <div class="column">
                                 <button id="newsPod" class="button is-fullwidth podcast__select-btn">News</button>
@@ -169,19 +176,19 @@
                     </div>
                 </div>
 
-                <!-- Episodes Amount -->
+                <!-- Episode Audio Length -->
                 <div class="columns question-divider margin-top-2">
                     <div class="column">
-                        <h4 class="title is-size-4">Episodes in series:</h4>
+                        <h4 class="title is-size-4">How long of a podcast do you want to listen to?</h4>
                         <div class="columns is-mobile">
                             <div class="column">
-                                <button id="epiLess5" class="button is-fullwidth podcast__select-btn">
-                                    Under five
+                                <button id="epiUnder30" class="button is-fullwidth podcast__select-btn">
+                                    Under 30 minutes
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="epiMore5" class="button is-fullwidth podcast__select-btn">
-                                    Over five
+                                <button id="epiOver30" class="button is-fullwidth podcast__select-btn">
+                                    Over 30 minutes
                                 </button>
                             </div>
                         </div>
@@ -191,7 +198,7 @@
                 <!-- Explicit Content -->
                 <div class="columns margin-top-2">
                     <div class="column">
-                        <h4 class="title is-size-4">Explicit content:</h4>
+                        <h4 class="title is-size-4">Are you okay with explicit content?</h4>
                         <div class="columns is-mobile">
                             <div class="column">
                                 <button id="yesExplicit" class="button is-fullwidth podcast__select-btn">Yes</button>
@@ -212,10 +219,12 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Display Podcast Generated Results -->
         <section class="display-section container" id="displayPodResults"></section>
 
         <!-- Movies Selector -->
-        <section class="display-section container" id="movieCard">
+        <section class="display-section container is-hidden" id="movieCard">
             <h1 class="title is-1 movie-color has-text-centered">Movies</h1>
 
             <div class="selector-container container">
@@ -270,7 +279,7 @@
         </section>
 
         <!-- Games  Selector -->
-        <section class="display-section container" id="gameCard">
+        <section class="display-section container is-hidden" id="gameCard">
             <h1 class="title is-1 has-text-centered">Video Games</h1>
 
             <div class="selector-container container">
