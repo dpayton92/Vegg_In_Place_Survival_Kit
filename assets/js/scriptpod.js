@@ -1,69 +1,60 @@
 
 //queryURL used to query the API
+//https://cors-anywhere.herokuapp.com/
+
 
 //var queryURL = "https://listen-api.listennotes.com/api/v2/search?q=Hidden%20Brain&sort_by_date=0&type=episode&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=0";
 //object to contain API call's query parameters and set API key
-var queryParams = {
+var headers = {
     "X-ListenAPI-key": "5c02a61e371a4e1fbb549aab65c3f07b",
 };
-var queryUrl = "https://cors-anywhere.herokuapp.com/https://listen-api.listennotes.com/api/v2";
 
-var parameters = {
-    id: 0,
-    explicit: 0,
-    epiNumb: 0
-}
-// var unirest = require('unirest');
-// unirest
-//     .post('http://mockbin.com/request')
-//     .headers({ 'Accept': 'application/json', 'Content-Type': 'application/json' })
-//     .send({ "parameter": 23, "foo": "bar" })
-//     .then((response) => {
-//         console.log(response.body)
-//     });
-
-// const unirest = require('unirest');
-
-// const response = await unirest.get('https://listen-api.listennotes.com/api/v2/search?q=coronavirus&sort_by_date=0&offset=0&len_min=10&len_max=30&genre_ids=9&published_after=0&language=English&safe_mode=1')
-//     .header('X-ListenAPI-Key', '5c02a61e371a4e1fbb549aab65c3f07b')
-// response.toJSON();
-//var queryUrl = "https://www.numbeo.com/api/city_prices?api_key=4n7468zewaj81z&query=Belgrade";
-
-// var encodedUrl = encodeURIComponent(queryUrl);
-// $.ajax({
-//     type: 'GET',
-//     contentType: 'application/json',
-//     url: 'https://corsbridge.herokuapp.com/' + encodedUrl,
-//     success: function (data) {
-//         console.log(data);
-//     }
-// });
-
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://listennotes.p.rapidapi.com/api/v1/search?sort_by_date=0&type=episode&offset=0&len_min=2&len_max=10&genre_ids=68%252C82&published_before=1490190241000&published_after=1390190241000&only_in=title&language=English&safe_mode=1&q=star%20wars",
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-host": "https://listen-api.listennotes.com/api/v2",
-//         "x-rapidapi-key": "5c02a61e371a4e1fbb549aab65c3f07b"
-//     }
+// var parameters = {
+//     id: 0,
+//     explicit: 0,
+//     epiLength: "",
 // }
+var id = "";
+var explicit = "";
+var epiLength = "";
+var userInput = "";
+console.log(id);
+
+// var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=sort_by_date=0&type=episode&offset=0&" + epiLength + "&genre_ids=" + id + "&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=" + explicit;
 
 
 
-// function buildQueryURL() {
+function generateResults() {
+    console.log(queryUrl);
+    // var encodedUrl = encodeURIComponent(queryUrl);
+    // $.ajax({
+    //     type: 'GET',
+    //     contentType: 'application/json',
+    //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
+    //     headers: headers,
+    //     success: function (data) {
+    //         console.log(data);
+    //     }
+    // })
+};
 
-//     queryParams.q = $(".button")
-//         .val();
-//     var genreSearch = "genre_id=" + parameters.id;
-//     console.log(queryURL + $.param(queryParams) + genreSearch);
-//     return queryURL + $.param(queryParams) + genreSearch;
 
 
-// };
-function displayPodcastInfo() {
 
+function buildQueryURL(id, explicit, epiLength, userInput) {
+
+    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=star%20wars&sort_by_date=0&type=episode&offset=0&len_max=30&genre_ids=" + id + "&language=Spanish&safe_mode=0";
+
+    //console.log(queryUrl);
+    displayPodcastInfo(queryUrl);
+};
+function displayPodcastInfo(queryUrl) {
+
+    //console.log("amazing things will happen");
+    // var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=sort_by_date=0&type=episode&offset=0&" + epiLength + "&genre_ids=" + id + "&published_before=1580172454000&published_after=0&only_in=title%2Cdescription&language=English&safe_mode=" + explicit;
+
+
+    console.log(queryUrl);
     // Creates AJAX call for the specific button being clicked
     $.ajax({
         url: queryUrl,
@@ -73,7 +64,8 @@ function displayPodcastInfo() {
         }
     }).then(function (response) {
 
-        console.log("amazing things will happen");
+        console.log(response);
+
         //create a function that takes the response and sets display parameters
 
         // Creates a div to display the podcast info
@@ -113,6 +105,7 @@ function displayPodcastInfo() {
 
 
 }
+//displayPodcastInfo();
 
 
 //event listener for podcast button from main page
@@ -130,15 +123,17 @@ $("#podcastBtn").on("click", function (event) {
 $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
-    parameters.id = 99;
-    //buildQueryURL();
+    id = "99";
+    buildQueryURL(id);
+    //displayPodcastInfo(id);
 
 });
 //comedy selector button
 $("#comedyPod").on("click", function (event) {
     event.preventDefault();
     console.log("comedy pod");
-    parameters.id = 133;
+    id = "133";
+    displayPodcastInfo(id);
 
 });
 //science selector button
@@ -166,18 +161,19 @@ $("#crimePod").on("click", function (event) {
 $("#busPod").on("click", function (event) {
     event.preventDefault();
     console.log("bizness pod");
-    parameters.id = 93;
+    id = "93";
+    displayPodcastInfo(id);
 
 });
 
 //less than 5 episodes in a series
-$("#epiLess5").on("click", function (event) {
+$("#epiUnder30").on("click", function (event) {
     event.preventDefault();
-    console.log("less than 5");
+    epiLength = "len_max=30";
 
 });
 //more than 5 episodes in a series
-$("#epiMore5").on("click", function (event) {
+$("#epiOver30").on("click", function (event) {
     event.preventDefault();
     console.log("more than 5");
 
@@ -186,6 +182,7 @@ $("#epiMore5").on("click", function (event) {
 //explicit content YES
 $("#yesExplicit").on("click", function (event) {
     event.preventDefault();
+    explicit = "0";
     console.log("YES dirty");
 
 });
@@ -199,12 +196,13 @@ $("#noExplicit").on("click", function (event) {
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     console.log("your results");
+    generateResults();
 
 });
 
-
+//displayPodcastInfo();
 // Adding a click event listener to all elements with a class of "movie-btn"
-$(document).on("click", "#podGenerate", displayPodcastInfo);
+$(document).on("click", "#podGenerate", displayPodcastInfo(queryUrl));
 
 
 
