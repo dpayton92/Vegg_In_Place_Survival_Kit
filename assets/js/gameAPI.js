@@ -1,3 +1,15 @@
+// Choose a media option
+$("#gamesBtn").on("click", function (event) {
+    // Prevent default so when page is refreshed the event remains
+    event.preventDefault();
+    // Hide media selector panel
+    $("#mediaSelectorCard").hide();
+    // Shows Game card
+    $("#gameCard").removeClass("is-hidden");
+
+});
+
+// AJAX call for XBox Results
 function xboxResults() {
     var settings = {
         "async": true,
@@ -36,7 +48,8 @@ function xboxResults() {
 
         var divFive = $("<div class='column'>");
         divFour.append(divFive);
-        // Grab image and give an attribute of source
+
+        // Grab image and assign an attribute of source
         var imgURL = response.results[3].image_background;
         var imgTag = $("<img>").attr("src", imgURL);
         divFive.append(imgTag);
@@ -44,22 +57,26 @@ function xboxResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
+        // Creating an ordered list
         var orderList = $("<ol type='1' class='game-list is-size-5'>");
         divSix.append(orderList);
 
+        // For loop to create list items with information being called from API
         for (i = 0; i < 6; i++) {
-
             var listItem = $("<li>").text(response.results[3].games[i].name);
             orderList.append(listItem);
         }
     });
 }
+
 // On xbox button click
 $("#xboxPlatform").on("click", function (e) {
     // Prevent from refreshing page
     e.preventDefault();
-
     xboxResults();
+    // Hide game card options
+    $("#gameCard").addClass("is-hidden");
+
 });
 
 //------------------------------------------------------------------------------------------
@@ -121,6 +138,7 @@ function pcResults() {
 $("#pcPlatform").on("click", function (e) {
     e.preventDefault();
     pcResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -182,6 +200,7 @@ function nintendoResults() {
 $("#nintendoPlatform").on("click", function (e) {
     e.preventDefault();
     nintendoResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -243,6 +262,7 @@ function playstationResults() {
 $("#playstationPlatform").on("click", function (e) {
     e.preventDefault();
     playstationResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -306,6 +326,7 @@ function actionGameResults() {
 $("#actionGame").on("click", function (e) {
     e.preventDefault();
     actionGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -367,6 +388,7 @@ function sportsGameResults() {
 $("#sportsGame").on("click", function (e) {
     e.preventDefault();
     sportsGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -428,6 +450,7 @@ function rpgGameResults() {
 $("#rpgGame").on("click", function (e) {
     e.preventDefault();
     rpgGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -489,6 +512,7 @@ function puzzleGameResults() {
 $("#puzzleGame").on("click", function (e) {
     e.preventDefault();
     puzzleGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -550,6 +574,7 @@ function familyGameResults() {
 $("#familyGame").on("click", function (e) {
     e.preventDefault();
     familyGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -611,6 +636,7 @@ function strategyGameResults() {
 $("#strategyGame").on("click", function (e) {
     e.preventDefault();
     strategyGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -672,6 +698,7 @@ function racingGameResults() {
 $("#racingGame").on("click", function (e) {
     e.preventDefault();
     racingGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 //--------------------------------------------------------------------------------------------------------
@@ -733,6 +760,7 @@ function fightingGameResults() {
 $("#fightingGame").on("click", function (e) {
     e.preventDefault();
     fightingGameResults();
+    $("#gameCard").addClass("is-hidden");
 });
 
 
