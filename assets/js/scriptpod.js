@@ -9,7 +9,7 @@ var parameters = {
     id: "",
     userInput: "",
     epiLength: "",
-    explicit: "",
+    explicit: ""
 
 };
 
@@ -28,10 +28,9 @@ var parameters = {
 // };
 
 function buildQueryURL(podData) {
-    console.log(podData);
+
     var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=" + podData.userInput + "&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
 
-    console.log(queryUrl);
     displayPodcastInfo(queryUrl);
 };
 function displayPodcastInfo(queryUrl) {
@@ -46,10 +45,9 @@ function displayPodcastInfo(queryUrl) {
         }
     }).then(function (response) {
 
-        console.log(response);
         var podDis = $("#displayPodResults");
         //create a function that takes the response and sets display parameters
-        //var podArray = 0;
+
         for (var podArray = 0; podArray < 3; podArray++) {
 
 
@@ -67,10 +65,15 @@ function displayPodcastInfo(queryUrl) {
             var podDescript = response.results[podArray].description_original;
             // Creates an element to have the description displayed
             var descrDisplay = $("<p>").text("Description: " + podDescript);
+
+            // const p = document.createElement('p');
+            // movie.description = movie.description.substring(0, 300);
+            // p.textContent = `${movie.description}...`;
+
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
             podDis.append(descrDisplay);
-            var audioMinutes = (((response.results[0].audio_length_sec) / 60).toFixed(2));
+            var audioMinutes = (((response.results[podArray].audio_length_sec) / 60).toFixed(2));
             // Retrieves the total number of episodes in series
             var audioLength = audioMinutes;
             // Creates an element to hold the episode number in series
@@ -97,8 +100,13 @@ function displayPodcastInfo(queryUrl) {
 function myFunction() {
     //grabs text to put into parameters object
     parameters.userInput = document.getElementById("myInput").value;
+    // document.getElementById("yourSearch").innerHTML = "Topic: " + parameters.userInput;
     //console.log(parameters.userInput);
+    // var topic = $("<p>").text("Topic: " + (parameters.userInput));
+    // $("#yourSearch").append(topic);
 }
+
+
 //event listener for podcast button from main page
 
 $("#podcastBtn").on("click", function (event) {
@@ -107,7 +115,7 @@ $("#podcastBtn").on("click", function (event) {
     //hide media selector panel
     $("#mediaSelectorCard").hide();
     //go to podcast card - unhides it
-    $("#podCard").removeClass().addClass(".display-section");
+    $("#podCard").removeClass().addClass(".display-section .container");
 
 });
 //news selector button
@@ -188,6 +196,12 @@ $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     buildQueryURL(parameters);
 });
+
+// var topic = $("<p>").text("Topic: " + (parameters.userInput));
+// $("#yourSearch").append(topic);
+var userGenre = $("<p>").text("Genre: " + (parameters.id));
+$("#yourSearch").append(userGenre);
+
 
 // Adding a click event listener to generate call display function
 $(document).on("click", "#podGenerate", displayPodcastInfo);
