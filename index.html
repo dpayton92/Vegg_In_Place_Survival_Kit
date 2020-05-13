@@ -132,15 +132,22 @@
         </section>
 
         <!-- Podcast Selector -->
-        <section class="display-section container" id="podCard">
+        <section class="display-section container is-hidden" id="podCard">
 
             <h1 class="title has-text-centered podcast-color is-1">Podcasts</h1>
+
+            <div class="selector-container container" id="podSearch">
+                <h4 class="title is-size-4">What topic are you in the mood to hear about?</h4>
+                <input class="input is-rounded" id="myInput" type="text" oninput="myFunction()"
+                    placeholder="type your search here">
+
+            </div>
 
             <div class="selector-container container">
                 <!-- Genre -->
                 <div class="columns question-divider">
                     <div class="column">
-                        <h4 class="title is-size-4">Select a genre:</h4>
+                        <h4 class="title is-size-4">Now let's choose a genre for your topic:</h4>
                         <div class="columns is-mobile">
                             <div class="column">
                                 <button id="newsPod" class="button is-fullwidth podcast__select-btn">News</button>
@@ -169,19 +176,19 @@
                     </div>
                 </div>
 
-                <!-- Episodes Amount -->
+                <!-- Episode Audio Length -->
                 <div class="columns question-divider margin-top-2">
                     <div class="column">
-                        <h4 class="title is-size-4">Episodes in series:</h4>
+                        <h4 class="title is-size-4">How long of a podcast do you want to listen to?</h4>
                         <div class="columns is-mobile">
                             <div class="column">
-                                <button id="epiLess5" class="button is-fullwidth podcast__select-btn">
-                                    Under five
+                                <button id="epiUnder30" class="button is-fullwidth podcast__select-btn">
+                                    Under 30 minutes
                                 </button>
                             </div>
                             <div class="column">
-                                <button id="epiMore5" class="button is-fullwidth podcast__select-btn">
-                                    Over five
+                                <button id="epiOver30" class="button is-fullwidth podcast__select-btn">
+                                    Over 30 minutes
                                 </button>
                             </div>
                         </div>
@@ -191,7 +198,7 @@
                 <!-- Explicit Content -->
                 <div class="columns margin-top-2">
                     <div class="column">
-                        <h4 class="title is-size-4">Explicit content:</h4>
+                        <h4 class="title is-size-4">Are you okay with explicit content?</h4>
                         <div class="columns is-mobile">
                             <div class="column">
                                 <button id="yesExplicit" class="button is-fullwidth podcast__select-btn">Yes</button>
@@ -202,7 +209,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div id="yourSearch">
+                    <p>Is this what you want to search?</p>
 
+                </div> -->
                 <!-- Submit Podcast -->
                 <div class="columns">
                     <div class="column">
@@ -211,12 +221,13 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
 
+        <!-- Display Podcast Generated Results -->
+        <section class="display-section container" id="displayPodResults"></section>
+
         <!-- Movies Selector -->
-        <section class="display-section container" id="movieCard">
+        <section class="display-section container is-hidden" id="movieCard">
             <h1 class="title is-1 movie-color has-text-centered">Movies</h1>
 
             <div class="selector-container container">
@@ -271,7 +282,7 @@
         </section>
 
         <!-- Games  Selector -->
-        <section class="display-section container" id="gameCard">
+        <section class="display-section container is-hidden" id="gameCard">
             <h1 class="title is-1 has-text-centered">Video Games</h1>
 
             <div class="selector-container container">
@@ -281,7 +292,8 @@
                         <h4 class="title is-size-4">Choose a platform:</h4>
                         <div class="columns is-mobile">
                             <div class="column">
-                                <button id="xboxPlatform" class="button is-fullwidth games__select-btn">XBOX One</button>
+                                <button id="xboxPlatform" class="button is-fullwidth games__select-btn">XBOX
+                                    One</button>
                             </div>
                             <div class="column">
                                 <button id="pcPlatform" class="button is-fullwidth games__select-btn">PC</button>
@@ -289,10 +301,12 @@
                         </div>
                         <div class="columns is-mobile">
                             <div class="column half-width">
-                                <button id="nintendoPlatform" class="button is-fullwidth games__select-btn">Nintendo Switch</button>
+                                <button id="nintendoPlatform" class="button is-fullwidth games__select-btn">Nintendo
+                                    Switch</button>
                             </div>
                             <div class="column half-width">
-                                <button id="playstationPlatform" class="button is-fullwidth games__select-btn">Playstation 5</button>
+                                <button id="playstationPlatform"
+                                    class="button is-fullwidth games__select-btn">Playstation 5</button>
                             </div>
                         </div>
                     </div>
@@ -330,7 +344,8 @@
                                 <button id="familyGame" class="button is-fullwidth games__select-btn">Family</button>
                             </div>
                             <div class="column">
-                                <button id="strategyGame" class="button is-fullwidth games__select-btn">Strategy</button>
+                                <button id="strategyGame"
+                                    class="button is-fullwidth games__select-btn">Strategy</button>
                             </div>
                         </div>
                         <div class="columns is-mobile">
@@ -338,7 +353,8 @@
                                 <button id="racingGame" class="button is-fullwidth games__select-btn">Racing</button>
                             </div>
                             <div class="column">
-                                <button id="fightingGame" class="button is-fullwidth games__select-btn">Fighting</button>
+                                <button id="fightingGame"
+                                    class="button is-fullwidth games__select-btn">Fighting</button>
                             </div>
                         </div>
                     </div>
@@ -373,6 +389,10 @@
     <!-- Java Script and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/scriptPod.js"></script>
+
+    <!-- <script type="module" src="node_modules/unirest/index.js"></script> -->
+
 </body>
 
 </html>
