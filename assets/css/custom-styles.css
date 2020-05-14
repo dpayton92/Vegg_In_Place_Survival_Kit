@@ -222,6 +222,7 @@ Movie/Podcast/Game Selectors
   color: #784398;
 }
 
+
 .podcast__select-btn:focus {
   color: #784398;
 }
@@ -231,6 +232,7 @@ Movie/Podcast/Game Selectors
   background-color: #784398;
   color: white;
 }
+
 
 /* Movie select button */
 .movie__select-btn {

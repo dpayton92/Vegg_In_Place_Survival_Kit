@@ -13,23 +13,9 @@ var parameters = {
 
 };
 
-// function generateResults() {
-//     console.log(queryUrl);
-//     // var encodedUrl = encodeURIComponent(queryUrl);
-//     // $.ajax({
-//     //     type: 'GET',
-//     //     contentType: 'application/json',
-//     //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
-//     //     headers: headers,
-//     //     success: function (data) {
-//     //         console.log(data);
-//     //     }
-//     // })
-// };
-
 function buildQueryURL(podData) {
 
-    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=" + podData.userInput + "&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
+    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=%22" + podData.userInput + "%22&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
 
     displayPodcastInfo(queryUrl);
 };
@@ -44,10 +30,10 @@ function displayPodcastInfo(queryUrl) {
             'X-ListenAPI-Key': '5c02a61e371a4e1fbb549aab65c3f07b',
         }
     }).then(function (response) {
-
+        //variable for the dynamically created html elements
         var podDis = $("#displayPodResults");
-        //create a function that takes the response and sets display parameters
 
+        //for loop to display top 3 results
         for (var podArray = 0; podArray < 3; podArray++) {
 
 
@@ -57,30 +43,29 @@ function displayPodcastInfo(queryUrl) {
             var podTitle = response.results[podArray].title_original;
             // Creates an element to have the description displayed
             var titleDisplay = $("<p>").text("Title: " + podTitle);
-            // Displays the description
+            // Displays the title
             podcastResultsDiv.append(titleDisplay);
             podDis.append(podcastResultsDiv);
 
             // Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
+            //cut movie description display down to 300 characters
+            podDescript = podDescript.substring(0, 300);
             // Creates an element to have the description displayed
-            var descrDisplay = $("<p>").text("Description: " + podDescript);
-
-            // const p = document.createElement('p');
-            // movie.description = movie.description.substring(0, 300);
-            // p.textContent = `${movie.description}...`;
+            var descrDisplay = $("<p>").text("Description: " + `${podDescript}...`);
 
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
             podDis.append(descrDisplay);
+
+            //length of episode cut to two decimal places
             var audioMinutes = (((response.results[podArray].audio_length_sec) / 60).toFixed(2));
-            // Retrieves the total number of episodes in series
+            // to display the length in minutes, not seconds as shown in API response
             var audioLength = audioMinutes;
-            // Creates an element to hold the episode number in series
+            // Creates an element to hold the episode length in series
             var epiDisplay = $("<p>").text("Audio Length: " + audioLength + " minutes");
-            //displays the episode numbers
+            //displays the episode length
             podcastResultsDiv.append(epiDisplay);
-            //console.log(response.total_episodes);
 
             //url for the image
             var podimgURL = response.results[podArray].thumbnail;
@@ -88,8 +73,7 @@ function displayPodcastInfo(queryUrl) {
             var podThumbnail = $("<img>").attr("src", podimgURL);
             // Appends the podcast thumbnail image
             podcastResultsDiv.append(podThumbnail);
-            // Displays podcast info for 3 podcasts 
-            //create for loop? 
+
         }
     });
 
@@ -123,6 +107,8 @@ $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
     parameters.id = "99";
+    // $("#newsPod").removeClass("active");
+    // $(this).addClass('active');
 
 });
 
@@ -143,14 +129,14 @@ $("#sciencePod").on("click", function (event) {
 //technology selector button
 $("#techPod").on("click", function (event) {
     event.preventDefault();
-    parameters.id = 127;
+    parameters.id = "127";
 
 });
 
 //True Crime selector button
 $("#crimePod").on("click", function (event) {
     event.preventDefault();
-    parameters.id = 135;
+    parameters.id = "135";
 
 });
 
@@ -206,3 +192,44 @@ $("#yourSearch").append(userGenre);
 // Adding a click event listener to generate call display function
 $(document).on("click", "#podGenerate", displayPodcastInfo);
 
+
+// function generateResults() {
+//     console.log(queryUrl);
+//     // var encodedUrl = encodeURIComponent(queryUrl);
+//     // $.ajax({
+//     //     type: 'GET',
+//     //     contentType: 'application/json',
+//     //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
+//     //     headers: headers,
+//     //     success: function (data) {
+//     //         console.log(data);
+//     //     }
+//     // })
+// };
+
+// https://api.themoviedb.org/3/discover/movie?api_key=d53acf2eaed1d96d8371a0a66bf0bb3c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28
+
+
+{/* <section class="display-section container" id="gameView">
+            <h1 class="title is-1 has-text-centered">Video Games</h1>
+            <div class="selector-container container">
+                <div class="columns">
+                    <div class="column">
+                        <h4 class="title is-size-4 has-text-centered">Here are your results, enjoy!</h4>
+                        <h2 class="title is-2 has-text-centered">Action</h2>
+                        <div class="columns is-mobile">
+                            <div class="column">
+                                <img src="./assets/img/xboxone-img.jpg" alt="random game">
+                            </div>
+                        </div>
+                        <div class="columns is-mobile container">
+                            <ol type="1" class="game-list is-size-5">
+                                <li>Game Name</li>
+                                <li>Game Name</li>
+                                <li>Game Name</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> */}
