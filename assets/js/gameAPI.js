@@ -25,7 +25,7 @@ function xboxResults() {
         console.log(response);
         // Selecting section HTML to append other tags into
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -40,7 +40,7 @@ function xboxResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("XBox One");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("XBox One");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -58,14 +58,25 @@ function xboxResults() {
         divThree.append(divSix);
 
         // Creating an ordered list
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
-
         // For loop to create list items with information being called from API
         for (i = 0; i < 6; i++) {
-            var listItem = $("<li>").text(response.results[3].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[3].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+        // Link it back to Home page
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 
@@ -94,7 +105,7 @@ function pcResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -109,7 +120,7 @@ function pcResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("PC");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("PC");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -125,14 +136,25 @@ function pcResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[0].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[0].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#pcPlatform").on("click", function (e) {
@@ -156,7 +178,7 @@ function nintendoResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -171,7 +193,7 @@ function nintendoResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Nintendo Switch");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Nintendo Switch");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -187,14 +209,25 @@ function nintendoResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[5].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[5].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#nintendoPlatform").on("click", function (e) {
@@ -218,7 +251,7 @@ function playstationResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -233,7 +266,7 @@ function playstationResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("PlayStation 5");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("PlayStation 5");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -249,14 +282,25 @@ function playstationResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[1].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[1].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#playstationPlatform").on("click", function (e) {
@@ -282,7 +326,7 @@ function actionGameResults() {
     $.ajax(settings).done(function (response) {
         console.log(response);
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -297,7 +341,7 @@ function actionGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Action");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Action");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -313,14 +357,25 @@ function actionGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[0].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[0].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#actionGame").on("click", function (e) {
@@ -344,7 +399,7 @@ function sportsGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -359,7 +414,7 @@ function sportsGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Sports");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Sports");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -375,14 +430,25 @@ function sportsGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[12].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[12].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#sportsGame").on("click", function (e) {
@@ -406,7 +472,7 @@ function rpgGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -421,7 +487,7 @@ function rpgGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("RPG");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("RPG");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -437,14 +503,25 @@ function rpgGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[3].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[3].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#rpgGame").on("click", function (e) {
@@ -468,7 +545,7 @@ function puzzleGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -483,7 +560,7 @@ function puzzleGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Puzzle");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Puzzle");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -499,14 +576,25 @@ function puzzleGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[9].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[9].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#puzzleGame").on("click", function (e) {
@@ -530,7 +618,7 @@ function familyGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -545,7 +633,7 @@ function familyGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Family");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Family");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -561,14 +649,25 @@ function familyGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[14].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[14].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#familyGame").on("click", function (e) {
@@ -592,7 +691,7 @@ function strategyGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -607,7 +706,7 @@ function strategyGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Strategy");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Strategy");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -623,14 +722,25 @@ function strategyGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[5].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[5].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#strategyGame").on("click", function (e) {
@@ -654,7 +764,7 @@ function racingGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -669,7 +779,7 @@ function racingGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Racing");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Racing");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -685,14 +795,25 @@ function racingGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[11].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[11].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#racingGame").on("click", function (e) {
@@ -716,7 +837,7 @@ function fightingGameResults() {
     }
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
-        var hOne = $("<h1 class='title is-1 has-text-centered'>").text("Video Games");
+        var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
         gameView.append(hOne);
 
         var divOne = $("<div class='selector-container container'>");
@@ -731,7 +852,7 @@ function fightingGameResults() {
         var hTwo = $("<h4 class='title is-size-4 has-text-centered'>").text("Here are your results, enjoy!");
         divThree.append(hTwo);
 
-        var hThree = $("<h2 class='title is-2 has-text-centered'>").text("Fighting");
+        var hThree = $("<h2 class='title is-2 has-text-centered games-color'>").text("Fighting");
         divThree.append(hThree);
 
         var divFour = $("<div class='columns is-mobile'>");
@@ -747,14 +868,25 @@ function fightingGameResults() {
         var divSix = $("<div class='columns is-mobile container'>");
         divThree.append(divSix);
 
-        var orderList = $("<ol type='1' class='game-list is-size-5'>");
+        var orderList = $("<ol type='1' class='game-list is-size-5 games-color'>");
         divSix.append(orderList);
 
         for (i = 0; i < 6; i++) {
-
-            var listItem = $("<li>").text(response.results[15].games[i].name);
+            var listItem = $("<li class='game-names'>").text(response.results[15].games[i].name);
             orderList.append(listItem);
         }
+        var divSeven = $("<div class='columns'>");
+        divThree.append(divSeven);
+
+        var divEight = $("<div class='column'>");
+        divSeven.append(divEight);
+
+        var aTag = $("<a>");
+        aTag.attr("href", "./index.html");
+        divEight.append(aTag);
+
+        var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
+        aTag.append(btn);
     });
 }
 $("#fightingGame").on("click", function (e) {
