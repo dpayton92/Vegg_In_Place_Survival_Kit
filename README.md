@@ -1,7 +1,5 @@
 # Vegg_In_Place_Survival_Kit
 
-# Vegg_In_Place_Survival_Kit
-
 
 # Obejctive 
 Vegg-In-Place is an entertainment discovery website that generates a movie, video game or podcast—based on a variety customizable presets. Just looking for a quick laugh? Jokes can be generated at will from the navbar.
@@ -32,9 +30,11 @@ Vegg-In-Place is an entertainment discovery website that generates a movie, vide
 
 
 
-
-## 
-
 ## Joke API
+Clicking on the Joke button in the navbar opens a modal that features a randomly generated joke. Jokes are supplied by David Katz's **[Official Joke API](https://github.com/15Dkatz/official_joke_api)**. Each time the modal is opened a joke category, setup and punchline is generated with JavaScript and posted on the HTML page dynamically. 
+![Joke Modal Demo](./assets/img/joke-modal-demo.gif)
+
+
+
 
 
