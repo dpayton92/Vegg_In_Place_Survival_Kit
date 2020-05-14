@@ -106,14 +106,27 @@ $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
     parameters.id = "99";
-    // $("#newsPod").removeClass("active");
-    // $(this).addClass('active');
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
+
 });
 
 //comedy selector button
 $("#comedyPod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "133";
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 });
 
@@ -122,12 +135,26 @@ $("#sciencePod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "107";
 
+    //adding css class to button to make color persist upon click
+    $(this).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
+
 });
 
 //technology selector button
 $("#techPod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "127";
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 });
 
@@ -136,12 +163,26 @@ $("#crimePod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "135";
 
+    //adding css class to button to make color persist upon click
+    $(this).addClass(".podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
+
 });
 
 //business selector button
 $("#busPod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "93";
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 
 });
@@ -151,12 +192,26 @@ $("#epiUnder30").on("click", function (event) {
     event.preventDefault();
     parameters.epiLength = "len_min=10&len_max=30";
 
+    //adding css class to button to make color persist upon click
+    $(this).addClass("epiSelect");
+    // remove active from the others
+    $(".epiSelect").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
+
 });
 
 //episode is longer than 30 minutes
 $("#epiOver30").on("click", function (event) {
     event.preventDefault();
     parameters.epiLength = "len_min=30";
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("epiSelect");
+    // remove active from the others
+    $(".epiSelect").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 });
 
@@ -165,6 +220,12 @@ $("#yesExplicit").on("click", function (event) {
     event.preventDefault();
     parameters.explicit = "0";
 
+    //adding css class to button to make color persist upon click
+    $(this).addClass("explSelect-btn");
+    // remove active from the others
+    $(".explSelect-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 });
 
@@ -172,6 +233,13 @@ $("#yesExplicit").on("click", function (event) {
 $("#noExplicit").on("click", function (event) {
     event.preventDefault();
     parameters.explicit = "1";
+
+    //adding css class to button to make color persist upon click
+    $(this).addClass("explSelect-btn");
+    // remove active from the others
+    $(".explSelect-btn").not(this).removeClass('active');
+    // toggle current clicked element
+    $(this).toggleClass('active');
 
 });
 

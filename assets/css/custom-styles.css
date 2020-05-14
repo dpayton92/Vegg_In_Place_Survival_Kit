@@ -204,7 +204,9 @@ Movie/Podcast/Game Selectors
 /* Base styles for select buttons */
 .podcast__select-btn,
 .movie__select-btn,
-.games__select-btn {
+.games__select-btn,
+.epiSelect,
+.explSelect-btn {
   padding: 40px 10px;
   border-radius: 0;
   height: auto;
@@ -228,6 +230,33 @@ Movie/Podcast/Game Selectors
 }
 
 .podcast__select-btn:hover {
+  border-color: #784398;
+  background-color: #784398;
+  color: white;
+}
+/* trying to persist */
+.podcast__select-btn.active {
+  border-color: #784398;
+  background-color: #784398;
+  color: white;
+}
+
+.epiSelect, .explSelect-btn {
+  border: solid 4px #784398;
+  color: #784398;
+}
+
+.epiSelect:focus, .explSelect-btn:focus {
+  color: #784398;
+}
+
+.epiSelect:hover, .explSelect-btn:hover {
+  border-color: #784398;
+  background-color: #784398;
+  color: white;
+}
+/* episode button persist */
+.epiSelect.active, .explSelect-btn.active {
   border-color: #784398;
   background-color: #784398;
   color: white;
@@ -366,7 +395,9 @@ Media Selectors
 @media only screen and (max-width: 574px) {
   .podcast__select-btn,
   .movie__select-btn,
-  .games__select-btn {
+  .games__select-btn,
+  .epiSelect,
+  .explSelect-btn {
     padding: 40px 10px;
     font-size: 18px;
   }
