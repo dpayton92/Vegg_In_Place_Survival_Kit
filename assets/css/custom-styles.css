@@ -205,7 +205,7 @@ Movie/Podcast/Game Selectors
 .podcast__select-btn,
 .movie__select-btn,
 .games__select-btn,
-.epiSelect,
+.epiSelect-btn,
 .explSelect-btn {
   padding: 40px 10px;
   border-radius: 0;
@@ -218,50 +218,35 @@ Movie/Podcast/Game Selectors
   height: 100%;
 }
 
-/* Podcast select button */
-.podcast__select-btn {
+/* Podcast select buttons*/
+.podcast__select-btn, .epiSelect-btn, .explSelect-btn  {
   border: solid 4px #784398;
   color: #784398;
 }
 
 
-.podcast__select-btn:focus {
+.podcast__select-btn:focus, .epiSelect-btn:focus, .explSelect-btn:focus {
   color: #784398;
 }
 
-.podcast__select-btn:hover {
-  border-color: #784398;
-  background-color: #784398;
-  color: white;
-}
-/* trying to persist */
-.podcast__select-btn.active {
+.podcast__select-btn:hover, .epiSelect-btn:hover, .explSelect-btn:hover {
   border-color: #784398;
   background-color: #784398;
   color: white;
 }
 
-.epiSelect, .explSelect-btn {
-  border: solid 4px #784398;
-  color: #784398;
-}
-
-.epiSelect:focus, .explSelect-btn:focus {
-  color: #784398;
-}
-
-.epiSelect:hover, .explSelect-btn:hover {
-  border-color: #784398;
-  background-color: #784398;
-  color: white;
-}
-/* episode button persist */
-.epiSelect.active, .explSelect-btn.active {
+/* active status to toggle and persist */
+.podcast__select-btn.active, .epiSelect-btn.active, .explSelect-btn.active {
   border-color: #784398;
   background-color: #784398;
   color: white;
 }
 
+.pod-img{
+  display: block;
+  margin: auto;
+  padding: 20px; 
+}
 
 /* Movie select button */
 .movie__select-btn {
@@ -361,12 +346,6 @@ Movie/Podcast/Game Selectors
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0);
 }
 
-
-
-/* #displayPodResults{
-width: 50%
-
-} */
 .podcastResults{
   width: 50%;
   margin: auto;
@@ -396,7 +375,7 @@ Media Selectors
   .podcast__select-btn,
   .movie__select-btn,
   .games__select-btn,
-  .epiSelect,
+  .epiSelect-btn,
   .explSelect-btn {
     padding: 40px 10px;
     font-size: 18px;

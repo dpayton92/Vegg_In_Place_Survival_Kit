@@ -40,11 +40,11 @@ function displayPodcastInfo(queryUrl) {
             var podcastResultsDiv = $("<div class = 'podcastResults'>");
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
-            // Creates an element to have the description displayed
-            var titleDisplay = $("<p class = 'title is-5 has-text-centered'>").text("Title: " + podTitle);
+            // Creates an element to have the title displayed
+            var titleDisplay = $("<p class = 'title is-5 has-text-centered'>").text(podTitle);
             // Displays the title
             podcastResultsDiv.append(titleDisplay);
-            podDis.append(podcastResultsDiv);
+
 
             // creates variable for response, Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
@@ -52,7 +52,6 @@ function displayPodcastInfo(queryUrl) {
             podDescript = podDescript.substring(0, 400);
             // Creates an element to have the description displayed
             var descrDisplay = $("<p>").text("Description: " + `${podDescript}...`);
-
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
             podDis.append(podcastResultsDiv);
@@ -69,9 +68,20 @@ function displayPodcastInfo(queryUrl) {
             //url for the image
             var podimgURL = response.results[podArray].thumbnail;
             // Creates an element to hold the podcast thumbnail image
-            var podThumbnail = $("<img>").attr("src", podimgURL);
+            var podThumbnail = $("<img class = pod-img>").attr("src", podimgURL);
             // Appends the podcast thumbnail image
             podcastResultsDiv.append(podThumbnail);
+
+            //grab url for access to podcast link
+            var accessLink = response.results[podArray].listennotes_url;
+            var playNow = $("<p>").text("Want to listen to this now?");
+            //create element to hold podcast link
+            var thelink = $('<a>', {
+                text: 'Click Here to Listen',
+                href: accessLink
+            }).appendTo(podcastResultsDiv);
+            //append access link to card
+            podcastResultsDiv.append(playNow, thelink);
 
         }
     });
@@ -193,9 +203,9 @@ $("#epiUnder30").on("click", function (event) {
     parameters.epiLength = "len_min=10&len_max=30";
 
     //adding css class to button to make color persist upon click
-    $(this).addClass("epiSelect");
+    $(this).addClass("epiSelect-btn");
     // remove active from the others
-    $(".epiSelect").not(this).removeClass('active');
+    $(".epiSelect-btn").not(this).removeClass('active');
     // toggle current clicked element
     $(this).toggleClass('active');
 
@@ -207,9 +217,9 @@ $("#epiOver30").on("click", function (event) {
     parameters.epiLength = "len_min=30";
 
     //adding css class to button to make color persist upon click
-    $(this).addClass("epiSelect");
+    $(this).addClass("epiSelect-btn");
     // remove active from the others
-    $(".epiSelect").not(this).removeClass('active');
+    $(".epiSelect-btn").not(this).removeClass('active');
     // toggle current clicked element
     $(this).toggleClass('active');
 
@@ -260,43 +270,4 @@ $("#yourSearch").append(userGenre);
 
 
 
-// function generateResults() {
-//     console.log(queryUrl);
-//     // var encodedUrl = encodeURIComponent(queryUrl);
-//     // $.ajax({
-//     //     type: 'GET',
-//     //     contentType: 'application/json',
-//     //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
-//     //     headers: headers,
-//     //     success: function (data) {
-//     //         console.log(data);
-//     //     }
-//     // })
-// };
 
-// https://api.themoviedb.org/3/discover/movie?api_key=d53acf2eaed1d96d8371a0a66bf0bb3c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28
-
-
-{/* <section class="display-section container" id="gameView">
-            <h1 class="title is-1 has-text-centered">Video Games</h1>
-            <div class="selector-container container">
-                <div class="columns">
-                    <div class="column">
-                        <h4 class="title is-size-4 has-text-centered">Here are your results, enjoy!</h4>
-                        <h2 class="title is-2 has-text-centered">Action</h2>
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <img src="./assets/img/xboxone-img.jpg" alt="random game">
-                            </div>
-                        </div>
-                        <div class="columns is-mobile container">
-                            <ol type="1" class="game-list is-size-5">
-                                <li>Game Name</li>
-                                <li>Game Name</li>
-                                <li>Game Name</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> */}
