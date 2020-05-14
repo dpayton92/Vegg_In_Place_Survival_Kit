@@ -334,10 +334,21 @@ Movie/Podcast/Game Selectors
 
 
 
+/* #displayPodResults{
+width: 50%
 
+} */
+.podcastResults{
+  width: 50%;
+  margin: auto;
+  margin-top: 30px; 
+  border: solid 4px #784398; 
+  padding: 20px; 
+}
 
-
-
+#resultTitle{
+color: #784398; 
+}
 
 
 

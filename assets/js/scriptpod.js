@@ -21,7 +21,6 @@ function buildQueryURL(podData) {
 };
 function displayPodcastInfo(queryUrl) {
 
-    //console.log(queryUrl);
     // Creates AJAX call for the specific button being clicked
     $.ajax({
         url: queryUrl,
@@ -30,7 +29,7 @@ function displayPodcastInfo(queryUrl) {
             'X-ListenAPI-Key': '5c02a61e371a4e1fbb549aab65c3f07b',
         }
     }).then(function (response) {
-        //variable for the dynamically created html elements
+        //variable for the dynamically created html elements to append to
         var podDis = $("#displayPodResults");
 
         //for loop to display top 3 results
@@ -42,21 +41,21 @@ function displayPodcastInfo(queryUrl) {
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
             // Creates an element to have the description displayed
-            var titleDisplay = $("<p>").text("Title: " + podTitle);
+            var titleDisplay = $("<p class = 'title is-5 has-text-centered'>").text("Title: " + podTitle);
             // Displays the title
             podcastResultsDiv.append(titleDisplay);
             podDis.append(podcastResultsDiv);
 
-            // Retrieves the description Data
+            // creates variable for response, Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
-            //cut movie description display down to 300 characters
-            podDescript = podDescript.substring(0, 300);
+            //cut movie description display down to 400 characters
+            podDescript = podDescript.substring(0, 400);
             // Creates an element to have the description displayed
             var descrDisplay = $("<p>").text("Description: " + `${podDescript}...`);
 
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
-            podDis.append(descrDisplay);
+            podDis.append(podcastResultsDiv);
 
             //length of episode cut to two decimal places
             var audioMinutes = (((response.results[podArray].audio_length_sec) / 60).toFixed(2));
@@ -109,7 +108,6 @@ $("#newsPod").on("click", function (event) {
     parameters.id = "99";
     // $("#newsPod").removeClass("active");
     // $(this).addClass('active');
-
 });
 
 //comedy selector button
@@ -181,6 +179,10 @@ $("#noExplicit").on("click", function (event) {
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     buildQueryURL(parameters);
+    $("#podCard").hide();
+    //go to podcast card - unhides it
+    $("#resultsPage").removeClass().addClass(".display-section .container");
+
 });
 
 // var topic = $("<p>").text("Topic: " + (parameters.userInput));
@@ -188,9 +190,6 @@ $("#podGenerate").on("click", function (event) {
 var userGenre = $("<p>").text("Genre: " + (parameters.id));
 $("#yourSearch").append(userGenre);
 
-
-// Adding a click event listener to generate call display function
-$(document).on("click", "#podGenerate", displayPodcastInfo);
 
 
 // function generateResults() {
