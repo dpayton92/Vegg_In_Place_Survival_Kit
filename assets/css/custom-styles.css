@@ -106,7 +106,13 @@ Modifiers
   margin-top: 2rem;
 }
 
+.game-list{
+  margin: 0 auto;
+}
 
+.game-names{
+  margin-bottom: 10px;
+}
 
 /*————————————————————————————————————————————————————
 Modal 
