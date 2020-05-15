@@ -138,7 +138,7 @@
 
             <div class="selector-container container" id="podSearch">
                 <h4 class="title is-size-4">What topic are you in the mood to hear about?</h4>
-                <input class="input is-rounded" id="myInput" type="text" oninput="myFunction()"
+                <input class="input is-rounded" id="myInput" type="text" oninput="inputFunction()"
                     placeholder="type your search here">
 
             </div>
@@ -223,8 +223,8 @@
         <!-- Display Podcast Generated Results -->
         <section class="display-section container is-hidden" id="resultsPage">
             <h1 class="title is-1 has-text-centered" id="resultTitle">Your Top 3 Podcast Results</h1>
-            <div class="columns is-mobile container">
-                <div class="column container" id="displayPodResults">
+            <div class="selector-container container">
+                <div id="displayPodResults">
 
                 </div>
             </div>

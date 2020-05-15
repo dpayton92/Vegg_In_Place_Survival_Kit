@@ -14,14 +14,14 @@ var parameters = {
 };
 
 function buildQueryURL(podData) {
-
+    //the queryUrl builds the ajax url with parameters 
     var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=%22" + podData.userInput + "%22&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
-
+    //pushes the built queryUrl into the displayPodcastInfo function
     displayPodcastInfo(queryUrl);
 };
 function displayPodcastInfo(queryUrl) {
 
-    // Creates AJAX call for the specific button being clicked
+    // Creates AJAX call includes header with API key
     $.ajax({
         url: queryUrl,
         method: "GET",
@@ -38,30 +38,30 @@ function displayPodcastInfo(queryUrl) {
 
             // Creates a div to display the podcast info
             var podcastResultsDiv = $("<div class = 'podcastResults'>");
+            //appending podcastResultsDiv to the displayPodResults id in HTML
+            podDis.append(podcastResultsDiv);
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
             // Creates an element to have the title displayed
-            var titleDisplay = $("<p class = 'title is-5 has-text-centered'>").text(podTitle);
+            var titleDisplay = $("<h2 class = 'title podcast-color has-text-centered as-text-weight-bold'>").text(podTitle);
             // Displays the title
             podcastResultsDiv.append(titleDisplay);
-
 
             // creates variable for response, Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
             //cut movie description display down to 400 characters
             podDescript = podDescript.substring(0, 400);
             // Creates an element to have the description displayed
-            var descrDisplay = $("<p>").text("Description: " + `${podDescript}...`);
+            var descrDisplay = $("<p class = 'title is-6 has-text-weight-semibold'>").text("Description: " + `${podDescript}...`);
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
-            podDis.append(podcastResultsDiv);
 
             //length of episode cut to two decimal places
             var audioMinutes = (((response.results[podArray].audio_length_sec) / 60).toFixed(2));
             // to display the length in minutes, not seconds as shown in API response
             var audioLength = audioMinutes;
             // Creates an element to hold the episode length in series
-            var epiDisplay = $("<p>").text("Audio Length: " + audioLength + " minutes");
+            var epiDisplay = $("<p class = 'has-text-weight-semibold'>").text("Audio Length: " + audioLength + " minutes");
             //displays the episode length
             podcastResultsDiv.append(epiDisplay);
 
@@ -74,14 +74,17 @@ function displayPodcastInfo(queryUrl) {
 
             //grab url for access to podcast link
             var accessLink = response.results[podArray].listennotes_url;
-            var playNow = $("<p>").text("Want to listen to this now?");
             //create element to hold podcast link
             var thelink = $('<a>', {
-                text: 'Click Here to Listen',
+                //text: 'Click Here to Listen',
                 href: accessLink
             }).appendTo(podcastResultsDiv);
             //append access link to card
-            podcastResultsDiv.append(playNow, thelink);
+            podcastResultsDiv.append(thelink);
+
+            //Create a button to listen to podcast
+            var btn = $("<button id='podListen' class='button is-fullwidth is-rounded podcast__generate-btn'>").text("Click Here to Listen");
+            thelink.append(btn);
 
         }
     });
@@ -90,18 +93,14 @@ function displayPodcastInfo(queryUrl) {
 }
 
 //user input textbox 
-function myFunction() {
+function inputFunction() {
+
     //grabs text to put into parameters object
     parameters.userInput = document.getElementById("myInput").value;
-    // document.getElementById("yourSearch").innerHTML = "Topic: " + parameters.userInput;
-    //console.log(parameters.userInput);
-    // var topic = $("<p>").text("Topic: " + (parameters.userInput));
-    // $("#yourSearch").append(topic);
+
 }
 
-
 //event listener for podcast button from main page
-
 $("#podcastBtn").on("click", function (event) {
     //prevent default so when page is refreshed the event remains
     event.preventDefault();
@@ -263,10 +262,6 @@ $("#podGenerate").on("click", function (event) {
 
 });
 
-// var topic = $("<p>").text("Topic: " + (parameters.userInput));
-// $("#yourSearch").append(topic);
-var userGenre = $("<p>").text("Genre: " + (parameters.id));
-$("#yourSearch").append(userGenre);
 
 
 

@@ -347,7 +347,7 @@ Movie/Podcast/Game Selectors
 }
 
 .podcastResults{
-  width: 50%;
+  width: 100%;
   margin: auto;
   margin-top: 30px; 
   border: solid 4px #784398; 
