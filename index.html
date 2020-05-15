@@ -229,6 +229,7 @@
         <!-- Movies Selector -->
         <section class="display-section container is-hidden" id="movieCard">
             <h1 class="title is-1 movie-color has-text-centered">Movies</h1>
+            <div class="display-section container" id="movieView">
 
             <div class="selector-container container">
 
@@ -280,28 +281,8 @@
                 </div>
             </div>
         </section>
-        <section class="display-section container is-hidden" id="movieView">
-            <h1 class="title is-1 has-text-centered">Movies</h1>
-            <div class="selector-container container">
-                <div class="columns">
-                    <div class="column">
-                        <h4 class="title is-size-4 has-text-centered">Here are your results, enjoy!</h4>
-                        <h2 class="title is-2 has-text-centered">Action</h2>
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <!-- <img src="https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=d53acf2eaed1d96d8371a0a66bf0bb3&language=en-US" alt="random game"> -->
-                            </div>
-                        </div>
-                        <div class="columns is-mobile container">
-                            <ol type="1" class="movie-list is-size-5">
-                                <li>Movie Name</li>
-                                <li>Movie Name</li>
-                                <li>Movie Name</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="display-section container" id="displayMovieView">
+            
         </section>
         
         <!-- Games  Selector -->
@@ -382,8 +363,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
         </section>
+        
+        
+        
     </main>
 
     <!-- Footer -->

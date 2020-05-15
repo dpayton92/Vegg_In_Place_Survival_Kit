@@ -6,7 +6,7 @@ var movieID = "";
 
 function buildQueryURL(headers) {
 	var api_key = "d53acf2eaed1d96d8371a0a66bf0bb3c";
-	var queryUrl = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + api_key + "&language=en-US" + movieID;
+	var queryUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + api_key + "&language=en-US&with_genres="  + movieID;
 	displayMovieInfo(queryUrl);
 	console.log(movieID)
 };
@@ -18,41 +18,44 @@ function displayMovieInfo(queryUrl) {
 		url: queryUrl,
 		method: "GET",
 	}).then(function (response) {
-
+		console.log(response)
 		var movieDis = $("#displayMovieView");
+	
 
+		for (var movieArr = 0; movieArr < 3; movieArr++) {
 
-		for (var movieArray = 0; movieArray < 3; movieArray++) {
-
-
+// display movie titles
 			var movieResultsDiv = $("<div class = 'movieView'>");
-			var movieTitle = response.results[movieArray].original_title;
-			var titleDisplay = $("<p>").text("Title" + movieTitle);
-
+			var movieTitle = response.results[movieArr].original_title;
+			var titleDisplay = $("<h1>").text("Title: " + movieTitle);
+			
 			movieResultsDiv.append(titleDisplay);
 			movieDis.append(movieResultsDiv);
 
 
-			var movieDescript = response.results[movieArray].description_original;
-			var descrDisplay = $("<p>").text("overview " + movieDescript);
+
+			var movieDescript = response.results[movieArr].overview;
+			var descrDisplay = $("<p>").text("Overview: " + movieDescript);
 
 			movieResultsDiv.append(descrDisplay);
-			movieDis.append(descrDisplay);
-			movieResultsDiv.append(epiDisplay);
-
-
-
-			var movieimgURL = response.results[movieArray].thumbnail;
-			var movieThumbnail = $("<img>").attr("src", movieimgURL);
+		
+// display image of movie
+			var baseURL = "https://image.tmdb.org/t/p/w500";
+			var movieImgURL = response.results[movieArr].poster_path;					
+			var comboURL = baseURL + movieImgURL;
+			var movieThumbnail = $("<img>").attr("src", comboURL);
 			movieResultsDiv.append(movieThumbnail);
-			console.log()
+			console.log(comboURL)
+			console.log(movieImgURL)
+			
+
 		}
 	});
 
 
 }
 
-
+// event listener for each genre selector
 
 $("#movieBtn").on("click", function (event) {
 	event.preventDefault();
@@ -85,8 +88,16 @@ $("movieHorror").on("click", function (event) {
 $("#movieGenerate").on("click", function (event) {
 	event.preventDefault();
 	buildQueryURL(movieID);
+	
 });
 
-$(document).on("click", "#movieGenerat", displayMovieInfo);
+$(document).on("click", "#movieGenerate", movieID);
+
+
+	
+
+
+
+
 
 
