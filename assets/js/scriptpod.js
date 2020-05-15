@@ -96,6 +96,7 @@ function displayPodcastInfo(queryUrl) {
 
 }
 
+
 //user input textbox 
 function myFunction() {
     //grabs text to put into parameters object
