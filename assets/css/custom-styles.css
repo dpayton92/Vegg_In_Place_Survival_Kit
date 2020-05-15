@@ -344,7 +344,7 @@ Movie/Podcast/Game Selectors
   border-color: #0F6C71;
 }
 
-.game__generate-btn:hover {
+.games__generate-btn:hover {
   background: none;
   color: #0F6C71;
   border: solid 4px #0F6C71;
