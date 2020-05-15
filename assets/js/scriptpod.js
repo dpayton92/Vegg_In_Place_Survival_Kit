@@ -239,8 +239,3 @@ $("#podGenerate").on("click", function (event) {
     $("#resultsPage").removeClass().addClass(".display-section .container");
 
 });
-
-
-
-
-
