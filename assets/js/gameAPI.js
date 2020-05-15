@@ -20,9 +20,8 @@ function xboxResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
-        console.log(response);
         // Selecting section HTML to append other tags into
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -74,7 +73,7 @@ function xboxResults() {
         var aTag = $("<a>");
         aTag.attr("href", "./index.html");
         divEight.append(aTag);
-
+        // Create a button
         var btn = $("<button id='gameGenerate' class='button is-fullwidth is-rounded games__generate-btn'>").text("Search Again");
         aTag.append(btn);
     });
@@ -102,7 +101,7 @@ function pcResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -175,7 +174,7 @@ function nintendoResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -248,7 +247,7 @@ function playstationResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -322,7 +321,7 @@ function actionGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         console.log(response);
         var gameView = $("#game-view");
@@ -396,7 +395,7 @@ function sportsGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -469,7 +468,7 @@ function rpgGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -542,7 +541,7 @@ function puzzleGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -615,7 +614,7 @@ function familyGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -688,7 +687,7 @@ function strategyGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -761,7 +760,7 @@ function racingGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
@@ -834,7 +833,7 @@ function fightingGameResults() {
             "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com",
             "x-rapidapi-key": "a123fe406bmsh1ac5a15cbd84ba7p16287ejsnbb685c6dd300"
         }
-    }
+    };
     $.ajax(settings).done(function (response) {
         var gameView = $("#game-view");
         var hOne = $("<h1 class='title is-1 has-text-centered games-color'>").text("Video Games");
