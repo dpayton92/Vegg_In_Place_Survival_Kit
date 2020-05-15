@@ -13,30 +13,15 @@ var parameters = {
 
 };
 
-// function generateResults() {
-//     console.log(queryUrl);
-//     // var encodedUrl = encodeURIComponent(queryUrl);
-//     // $.ajax({
-//     //     type: 'GET',
-//     //     contentType: 'application/json',
-//     //     url: 'https://corsbridge2.herokuapp.com/' + encodedUrl,
-//     //     headers: headers,
-//     //     success: function (data) {
-//     //         console.log(data);
-//     //     }
-//     // })
-// };
-
 function buildQueryURL(podData) {
-
-    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=" + podData.userInput + "&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
-
+    //the queryUrl builds the ajax url with parameters 
+    var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=%22" + podData.userInput + "%22&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
+    //pushes the built queryUrl into the displayPodcastInfo function
     displayPodcastInfo(queryUrl);
 };
 function displayPodcastInfo(queryUrl) {
 
-    //console.log(queryUrl);
-    // Creates AJAX call for the specific button being clicked
+    // Creates AJAX call includes header with API key
     $.ajax({
         url: queryUrl,
         method: "GET",
@@ -44,52 +29,63 @@ function displayPodcastInfo(queryUrl) {
             'X-ListenAPI-Key': '5c02a61e371a4e1fbb549aab65c3f07b',
         }
     }).then(function (response) {
-
+        //variable for the dynamically created html elements to append to
         var podDis = $("#displayPodResults");
-        //create a function that takes the response and sets display parameters
 
+        //for loop to display top 3 results
         for (var podArray = 0; podArray < 3; podArray++) {
 
 
             // Creates a div to display the podcast info
             var podcastResultsDiv = $("<div class = 'podcastResults'>");
+            //appending podcastResultsDiv to the displayPodResults id in HTML
+            podDis.append(podcastResultsDiv);
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
-            // Creates an element to have the description displayed
-            var titleDisplay = $("<p>").text("Title: " + podTitle);
-            // Displays the description
+            // Creates an element to have the title displayed
+            var titleDisplay = $("<h2 class = 'title podcast-color has-text-centered as-text-weight-bold'>").text(podTitle);
+            // Displays the title
             podcastResultsDiv.append(titleDisplay);
-            podDis.append(podcastResultsDiv);
 
-            // Retrieves the description Data
+            // creates variable for response, Retrieves the description Data
             var podDescript = response.results[podArray].description_original;
+            //cut movie description display down to 400 characters
+            podDescript = podDescript.substring(0, 400);
             // Creates an element to have the description displayed
-            var descrDisplay = $("<p>").text("Description: " + podDescript);
-
-            // const p = document.createElement('p');
-            // movie.description = movie.description.substring(0, 300);
-            // p.textContent = `${movie.description}...`;
-
+            var descrDisplay = $("<p class = 'title is-6 has-text-weight-semibold'>").text("Description: " + `${podDescript}...`);
             // Displays the description
             podcastResultsDiv.append(descrDisplay);
-            podDis.append(descrDisplay);
+
+            //length of episode cut to two decimal places
             var audioMinutes = (((response.results[podArray].audio_length_sec) / 60).toFixed(2));
-            // Retrieves the total number of episodes in series
+            // to display the length in minutes, not seconds as shown in API response
             var audioLength = audioMinutes;
-            // Creates an element to hold the episode number in series
-            var epiDisplay = $("<p>").text("Audio Length: " + audioLength + " minutes");
-            //displays the episode numbers
+            // Creates an element to hold the episode length in series
+            var epiDisplay = $("<p class = 'has-text-weight-semibold'>").text("Audio Length: " + audioLength + " minutes");
+            //displays the episode length
             podcastResultsDiv.append(epiDisplay);
-            //console.log(response.total_episodes);
 
             //url for the image
             var podimgURL = response.results[podArray].thumbnail;
             // Creates an element to hold the podcast thumbnail image
-            var podThumbnail = $("<img>").attr("src", podimgURL);
+            var podThumbnail = $("<img class = pod-img>").attr("src", podimgURL);
             // Appends the podcast thumbnail image
             podcastResultsDiv.append(podThumbnail);
-            // Displays podcast info for 3 podcasts 
-            //create for loop? 
+
+            //grab url for access to podcast link
+            var accessLink = response.results[podArray].listennotes_url;
+            //create element to hold podcast link
+            var thelink = $('<a>', {
+                //text: 'Click Here to Listen',
+                href: accessLink
+            }).appendTo(podcastResultsDiv);
+            //append access link to card
+            podcastResultsDiv.append(thelink);
+
+            //Create a button to listen to podcast
+            var btn = $("<button id='podListen' class='button is-fullwidth is-rounded podcast__generate-btn'>").text("Click Here to Listen");
+            thelink.append(btn);
+
         }
     });
 
@@ -98,18 +94,14 @@ function displayPodcastInfo(queryUrl) {
 
 
 //user input textbox 
-function myFunction() {
+function inputFunction() {
+
     //grabs text to put into parameters object
     parameters.userInput = document.getElementById("myInput").value;
-    // document.getElementById("yourSearch").innerHTML = "Topic: " + parameters.userInput;
-    //console.log(parameters.userInput);
-    // var topic = $("<p>").text("Topic: " + (parameters.userInput));
-    // $("#yourSearch").append(topic);
+
 }
 
-
 //event listener for podcast button from main page
-
 $("#podcastBtn").on("click", function (event) {
     //prevent default so when page is refreshed the event remains
     event.preventDefault();
@@ -119,18 +111,31 @@ $("#podcastBtn").on("click", function (event) {
     $("#podCard").removeClass().addClass(".display-section .container");
 
 });
+
+function persistToggleGenres(thisBtn) {
+    //adding css class to button to make color persist upon click
+    $(thisBtn).addClass("podcast__select-btn");
+    // remove active from the others
+    $(".podcast__select-btn").not(thisBtn).removeClass('active');
+    // toggle current clicked element
+    $(thisBtn).toggleClass('active');
+}
+
 //news selector button
 $("#newsPod").on("click", function (event) {
     event.preventDefault();
     //set value of news id (99) to object id key
     parameters.id = "99";
-
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 });
 
 //comedy selector button
 $("#comedyPod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "133";
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 
 });
 
@@ -138,20 +143,26 @@ $("#comedyPod").on("click", function (event) {
 $("#sciencePod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "107";
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 
 });
 
 //technology selector button
 $("#techPod").on("click", function (event) {
     event.preventDefault();
-    parameters.id = 127;
+    parameters.id = "127";
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 
 });
 
 //True Crime selector button
 $("#crimePod").on("click", function (event) {
     event.preventDefault();
-    parameters.id = 135;
+    parameters.id = "135";
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 
 });
 
@@ -159,14 +170,27 @@ $("#crimePod").on("click", function (event) {
 $("#busPod").on("click", function (event) {
     event.preventDefault();
     parameters.id = "93";
-
+    //function to make buttons toggle and persist color
+    persistToggleGenres(this);
 
 });
+
+function persistToggleEpi(thisBtn) {
+    //adding css class to button to make color persist upon click
+    $(thisBtn).addClass("epiSelect-btn");
+    // remove active from the others
+    $(".epiSelect-btn").not(thisBtn).removeClass('active');
+    // toggle current clicked element
+    $(thisBtn).toggleClass('active');
+}
 
 //episode is less than 30 minutes
 $("#epiUnder30").on("click", function (event) {
     event.preventDefault();
     parameters.epiLength = "len_min=10&len_max=30";
+    //function to toggle/persist button color
+    persistToggleEpi(this);
+
 
 });
 
@@ -174,13 +198,25 @@ $("#epiUnder30").on("click", function (event) {
 $("#epiOver30").on("click", function (event) {
     event.preventDefault();
     parameters.epiLength = "len_min=30";
+    //function to toggle/persist button color
+    persistToggleEpi(this);
 
 });
 
+function persistToggleExplicit(thisBtn) {
+    //adding css class to button to make color persist upon click
+    $(thisBtn).addClass("explSelect-btn");
+    // remove active from the others
+    $(".explSelect-btn").not(thisBtn).removeClass('active');
+    // toggle current clicked element
+    $(thisBtn).toggleClass('active');
+}
 //explicit content YES
 $("#yesExplicit").on("click", function (event) {
     event.preventDefault();
     parameters.explicit = "0";
+    //function to persist/toggle color on buttons
+    persistToggleExplicit(this);
 
 
 });
@@ -190,20 +226,17 @@ $("#noExplicit").on("click", function (event) {
     event.preventDefault();
     parameters.explicit = "1";
 
+    //function to persist/toggle color on buttons
+    persistToggleExplicit(this);
+
 });
 
 //generate results
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     buildQueryURL(parameters);
+    $("#podCard").hide();
+    //go to podcast card - unhides it
+    $("#resultsPage").removeClass().addClass(".display-section .container");
+
 });
-
-// var topic = $("<p>").text("Topic: " + (parameters.userInput));
-// $("#yourSearch").append(topic);
-var userGenre = $("<p>").text("Genre: " + (parameters.id));
-$("#yourSearch").append(userGenre);
-
-
-// Adding a click event listener to generate call display function
-$(document).on("click", "#podGenerate", displayPodcastInfo);
-
