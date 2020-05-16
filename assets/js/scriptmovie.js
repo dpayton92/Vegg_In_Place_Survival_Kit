@@ -19,7 +19,7 @@ function displayMovieInfo(queryUrl) {
 		method: "GET",
 	}).then(function (response) {
 		console.log(response)
-		var movieDis = $("#displayMovieView");
+		var movieDis = $("#movieResults");
 	
 
 		for (var movieArr = 0; movieArr < 3; movieArr++) {
@@ -43,7 +43,8 @@ function displayMovieInfo(queryUrl) {
 			var baseURL = "https://image.tmdb.org/t/p/w500";
 			var movieImgURL = response.results[movieArr].poster_path;					
 			var comboURL = baseURL + movieImgURL;
-			var movieThumbnail = $("<img>").attr("src", comboURL);
+			var movieThumbnail = $("<img class='pod-img'>").attr("src", comboURL)
+
 			movieResultsDiv.append(movieThumbnail);
 			console.log(comboURL)
 			console.log(movieImgURL)
@@ -60,7 +61,7 @@ function displayMovieInfo(queryUrl) {
 $("#movieBtn").on("click", function (event) {
 	event.preventDefault();
 	$("#mediaSelectorCard").hide();
-	$("#movieCard").removeClass().addClass(".display-section .container");
+	$("#movieCard").removeClass("is-hidden");
 });
 
 $("#movieAction").on("click", function (event) {
@@ -89,7 +90,7 @@ $("#movieGenerate").on("click", function (event) {
 	event.preventDefault();
 	movieQueryURL(movieID);
 	$("#movieCard").hide();
-	$("#resultsdisplayMovieView"),removeClass().addClass(".display-section .container");
+	$("#resultsdisplayMovieView").removeClass("is-hidden");
 	
 	
 });
