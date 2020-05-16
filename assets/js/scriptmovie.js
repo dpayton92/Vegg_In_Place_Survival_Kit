@@ -4,7 +4,7 @@
 
 var movieID = "";
 
-function buildQueryURL(headers) {
+function movieQueryURL(movieID) {
 	var api_key = "d53acf2eaed1d96d8371a0a66bf0bb3c";
 	var queryUrl = "https://api.themoviedb.org/3/discover/movie?api_key=" + api_key + "&language=en-US&with_genres="  + movieID;
 	displayMovieInfo(queryUrl);
@@ -35,9 +35,9 @@ function displayMovieInfo(queryUrl) {
 
 
 			var movieDescript = response.results[movieArr].overview;
-			var descrDisplay = $("<p>").text("Overview: " + movieDescript);
+			var overviewDisplay = $("<p>").text("Overview: " + movieDescript);
 
-			movieResultsDiv.append(descrDisplay);
+			movieResultsDiv.append(overviewDisplay);
 		
 // display image of movie
 			var baseURL = "https://image.tmdb.org/t/p/w500";
@@ -87,7 +87,7 @@ $("movieHorror").on("click", function (event) {
 
 $("#movieGenerate").on("click", function (event) {
 	event.preventDefault();
-	buildQueryURL(movieID);
+	movieQueryURL(movieID);
 	$("#movieCard").hide();
 	$("#resultsdisplayMovieView"),removeClass().addClass(".display-section .container");
 	
