@@ -31,9 +31,20 @@ Clicking on the Joke button in the navbar opens a modal that features a randomly
 ![Joke Modal Demo](./assets/img/joke-modal-demo.gif)
 
 
+## Movie API
+When the user clicks the movie card they are presented with 4 genres to choose from. The user will select a genre, click generate and a dynamically created page presenting 3 movie options within that genre will be displayed with the title, an overview, and a poster image. 
+
+
+## Podcast API
+Clicking on the 'Podcast' card brings the user to a page where selections are made. The user will enter a topic to be searched, select a genre, episode length, and whether to include explicit content or not. These search parameters are then requested from the Listen Notes API **[Listen Notes API](https://listennotes.com/api/)** Upon the user clicking the generate button, a dynamically created page will display three podcast results ordered by date. The results will display a title, a description cut to 400 words with ellipses at the end. The length of the audio in minutes is displayed, a thumbnail image of the podcast series, and a clickable button that will bring the user to the listennotes page to listen to the generated podcast. 
+The example below shows a user selecting the podcast card, entering a search topic and then selecting a genre, audio length, and explicit choice- the demo shows that the user may click multiple buttons, but the last highlighted is what will be requested from the API. 
+
+![Podcast API Demo](./assets/img/podcastexample.gif)
+
 ## Game API
 When the 'Games' card is clicked, an HTML page is dynamically displayed with options between choosing a platform or a genre. The game database API used is **[RAWG game API](https://rawg.io/)**. When the selection is made, a dynamically generated results page appears with the top 6 games. 
 
 ![Game API Demo](./assets/img/game-API-demo.gif)
+
 
 

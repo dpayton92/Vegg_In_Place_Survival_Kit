@@ -16,6 +16,7 @@ var parameters = {
 function buildQueryURL(podData) {
     //the queryUrl builds the ajax url with parameters 
     var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=%22" + podData.userInput + "%22&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
+
     //pushes the built queryUrl into the displayPodcastInfo function
     displayPodcastInfo(queryUrl);
 };
@@ -40,6 +41,7 @@ function displayPodcastInfo(queryUrl) {
             var podcastResultsDiv = $("<div class = 'podcastResults'>");
             //appending podcastResultsDiv to the displayPodResults id in HTML
             podDis.append(podcastResultsDiv);
+
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
             // Creates an element to have the title displayed
@@ -88,8 +90,6 @@ function displayPodcastInfo(queryUrl) {
 
         }
     });
-
-
 }
 
 
@@ -99,7 +99,7 @@ function inputFunction() {
     //grabs text to put into parameters object
     parameters.userInput = document.getElementById("myInput").value;
 
-}
+};
 
 //event listener for podcast button from main page
 $("#podcastBtn").on("click", function (event) {
@@ -108,7 +108,7 @@ $("#podcastBtn").on("click", function (event) {
     //hide media selector panel
     $("#mediaSelectorCard").hide();
     //go to podcast card - unhides it
-    $("#podCard").removeClass().addClass(".display-section .container");
+    $("#podCard").removeClass("is-hidden");
 
 });
 
@@ -236,7 +236,7 @@ $("#podGenerate").on("click", function (event) {
     event.preventDefault();
     buildQueryURL(parameters);
     $("#podCard").hide();
-    //go to podcast card - unhides it
-    $("#resultsPage").removeClass().addClass(".display-section .container");
+    //go to podcast results card - unhides it
+    $("#resultsPage").removeClass("is-hidden");
 
 });
