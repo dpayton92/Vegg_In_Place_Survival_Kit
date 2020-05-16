@@ -13,12 +13,16 @@ var parameters = {
 
 };
 
+//function will take in the parameters object to build the queryUrl
 function buildQueryURL(podData) {
     //the queryUrl builds the ajax url with parameters 
     var queryUrl = "https://listen-api.listennotes.com/api/v2/search?q=%22" + podData.userInput + "%22&sort_by_date=1&type=episode&offset=0&" + podData.epiLength + "&genre_ids=" + podData.id + "&only_in=title%2Cdescription&language=English&safe_mode=" + podData.explicit;
+
     //pushes the built queryUrl into the displayPodcastInfo function
     displayPodcastInfo(queryUrl);
 };
+
+//function creates ajax call with header and queryUrl then makes promise for response and displays results
 function displayPodcastInfo(queryUrl) {
 
     // Creates AJAX call includes header with API key
@@ -35,11 +39,11 @@ function displayPodcastInfo(queryUrl) {
         //for loop to display top 3 results
         for (var podArray = 0; podArray < 3; podArray++) {
 
-
             // Creates a div to display the podcast info
             var podcastResultsDiv = $("<div class = 'podcastResults'>");
             //appending podcastResultsDiv to the displayPodResults id in HTML
             podDis.append(podcastResultsDiv);
+
             // Retrieves the title
             var podTitle = response.results[podArray].title_original;
             // Creates an element to have the title displayed
@@ -68,7 +72,7 @@ function displayPodcastInfo(queryUrl) {
             //url for the image
             var podimgURL = response.results[podArray].thumbnail;
             // Creates an element to hold the podcast thumbnail image
-            var podThumbnail = $("<img class = pod-img>").attr("src", podimgURL);
+            var podThumbnail = $("<img class = 'pod-img'>").attr("src", podimgURL);
             // Appends the podcast thumbnail image
             podcastResultsDiv.append(podThumbnail);
 
@@ -76,7 +80,6 @@ function displayPodcastInfo(queryUrl) {
             var accessLink = response.results[podArray].listennotes_url;
             //create element to hold podcast link
             var thelink = $('<a>', {
-                //text: 'Click Here to Listen',
                 href: accessLink
             }).appendTo(podcastResultsDiv);
             //append access link to card
@@ -88,18 +91,14 @@ function displayPodcastInfo(queryUrl) {
 
         }
     });
-
-
 }
-
 
 //user input textbox 
 function inputFunction() {
-
     //grabs text to put into parameters object
     parameters.userInput = document.getElementById("myInput").value;
 
-}
+};
 
 //event listener for podcast button from main page
 $("#podcastBtn").on("click", function (event) {
@@ -108,10 +107,11 @@ $("#podcastBtn").on("click", function (event) {
     //hide media selector panel
     $("#mediaSelectorCard").hide();
     //go to podcast card - unhides it
-    $("#podCard").removeClass().addClass(".display-section .container");
+    $("#podCard").removeClass("is-hidden");
 
 });
 
+//function allows buttons to be clicked multiple times, last highlighted button is what passes the parameters
 function persistToggleGenres(thisBtn) {
     //adding css class to button to make color persist upon click
     $(thisBtn).addClass("podcast__select-btn");
@@ -175,6 +175,7 @@ $("#busPod").on("click", function (event) {
 
 });
 
+//function allows buttons to be clicked multiple times, last highlighted button is what passes the parameters
 function persistToggleEpi(thisBtn) {
     //adding css class to button to make color persist upon click
     $(thisBtn).addClass("epiSelect-btn");
@@ -191,7 +192,6 @@ $("#epiUnder30").on("click", function (event) {
     //function to toggle/persist button color
     persistToggleEpi(this);
 
-
 });
 
 //episode is longer than 30 minutes
@@ -203,6 +203,7 @@ $("#epiOver30").on("click", function (event) {
 
 });
 
+//function allows buttons to be clicked multiple times, last highlighted button is what passes the parameters
 function persistToggleExplicit(thisBtn) {
     //adding css class to button to make color persist upon click
     $(thisBtn).addClass("explSelect-btn");
@@ -225,18 +226,19 @@ $("#yesExplicit").on("click", function (event) {
 $("#noExplicit").on("click", function (event) {
     event.preventDefault();
     parameters.explicit = "1";
-
     //function to persist/toggle color on buttons
     persistToggleExplicit(this);
 
 });
 
-//generate results
+//generate results onclick function 
 $("#podGenerate").on("click", function (event) {
     event.preventDefault();
+    //passes the parameters into the query builder function
     buildQueryURL(parameters);
+    //hides the podcast card
     $("#podCard").hide();
-    //go to podcast card - unhides it
-    $("#resultsPage").removeClass().addClass(".display-section .container");
+    //go to podcast results card - unhides it
+    $("#resultsPage").removeClass("is-hidden");
 
 });
