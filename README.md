@@ -3,7 +3,7 @@
 # Objective 
 Vegg-In-Place is an entertainment discovery website that generates a movie, video game or podcast—based on a variety customizable presets. Just looking for a quick laugh? Jokes can be generated at will from the navbar.
 
-**[View Deployed Site](dpayton92.github.io/Vegg_In_Place_Survival_Kit)**
+**[View Deployed Site](https://dpayton92.github.io/Vegg_In_Place_Survival_Kit/)**
 
 
 ## User Story 
