@@ -11,7 +11,7 @@ function buildQueryURL(headers) {
 	console.log(movieID)
 };
 function displayMovieInfo(queryUrl) {
-
+	
 	console.log(queryUrl);
 
 	$.ajax({
@@ -88,10 +88,13 @@ $("movieHorror").on("click", function (event) {
 $("#movieGenerate").on("click", function (event) {
 	event.preventDefault();
 	buildQueryURL(movieID);
+	$("#movieCard").hide();
+	$("#resultsdisplayMovieView"),removeClass().addClass(".display-section .container");
+	
 	
 });
 
-$(document).on("click", "#movieGenerate", movieID);
+// $(document).on("click", "#movieGenerate", movieID);
 
 
 	
